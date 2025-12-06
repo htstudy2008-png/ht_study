@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - H&T STUDY</title>
+    <link rel="stylesheet" href="../Css/style.css">
+</head>
+<body class="login-page">  <!-- THÊM class này -->
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-logo">
+            <img src="/hinh_anh/logo.png" alt="H&T STUDY">
+            <span>H&T STUDY</span>
+        </div>
+
+        <h1 class="login-title">Đăng nhập</h1>
+        <p class="login-subtitle">Nhập mã học sinh và mật khẩu để truy cập khóa học.</p>
+
+        <form id="login-form" class="login-form">
+            <label for="student-code">Mã học sinh</label>
+            <input type="text" id="student-code" placeholder="Ví dụ: HS001" required>
+
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" placeholder="••••••••" required>
+
+            <div id="login-error" class="login-error" style="display:none;"></div>
+
+            <button type="submit" class="login-button">Đăng nhập</button>
+        </form>
+
+        <p class="login-hint">
+            Nếu quên tài khoản, hãy liên hệ giáo viên để được cấp lại.
+        </p>
+    </div>
+</div>
+
+<script src="/dang-nhap/js/auth.js"></script>
+</body>
+</html>

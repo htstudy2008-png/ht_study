@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa 11 - H&T STUDY</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="/dang-nhap/js/auth.js"></script>
+    <script>requireAuth();</script>
+</head>
+<body>
+
+<header class="header">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <nav id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+
+        <a href="/trang_chu/html/Index.html">Trang chủ</a>
+
+        <div class="sidebar-section">
+            <span class="sidebar-title">Toán</span>
+            <a href="/Toan/toan10/html/toan10.html" data-need-login>Toán 10</a>
+            <a href="/Toan/toan11/html/toan11.html" data-need-login>Toán 11</a>
+            <a href="/Toan/toan12/html/toan12.html" data-need-login>Toán 12</a>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-title">Hóa</span>
+            <a href="/Hoa/hoa10/html/Hoa10.html" data-need-login>Hóa 10</a>
+            <a href="/Hoa/hoa11/html/Hoa11.html" class="active" data-need-login>Hóa 11</a>
+            <a href="/Hoa/hoa12/html/Hoa12.html" data-need-login>Hóa 12</a>
+        </div>
+
+        <a href="/Dang_nhap/Html/login.html" id="auth-button-sidebar">Đăng nhập</a>
+    </nav>
+
+    <div class="logo-title">
+        <img src="/hinh_anh/logo.png" alt="H&T STUDY Logo">
+        <span class="site-title">H&T STUDY</span>
+    </div>
+
+    <nav class="top-nav">
+        <ul>
+            <li><a href="/trang_chu/html/Index.html">Trang chủ</a></li>
+
+            <li class="dropdown">
+                <a href="#">Toán</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Toan/toan10/html/toan10.html" data-need-login>Toán 10</a></li>
+                    <li><a href="/Toan/toan11/html/toan11.html" data-need-login>Toán 11</a></li>
+                    <li><a href="/Toan/toan12/html/toan12.html" data-need-login>Toán 12</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="active">Hóa</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Hoa/hoa10/html/Hoa10.html" data-need-login>Hóa 10</a></li>
+                    <li><a href="/Hoa/hoa11/html/Hoa11.html" class="active" data-need-login>Hóa 11</a></li>
+                    <li><a href="/Hoa/hoa12/html/Hoa12.html" data-need-login>Hóa 12</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="user-menu">
+        <button class="avatar-btn" id="avatar-btn">HS</button>
+        <div class="user-dropdown" id="user-dropdown">
+            <div class="user-dropdown-inner">
+                <div class="user-label">Học sinh</div>
+                <div class="user-name" id="user-name-display">Chưa đăng nhập</div>
+                <div class="user-code" id="user-code-display">Mã học sinh: ---</div>
+                <hr>
+                <button class="user-dropdown-link" id="btn-my-courses">Khóa học của tôi</button>
+                <button class="user-dropdown-link" id="btn-guide">Hướng dẫn</button>
+                <button class="user-dropdown-link user-auth-btn" id="user-auth-btn">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+    <input type="file" id="avatar-file" accept="image/*" style="display:none">
+</header>
+
+<main class="content">
+    <div class="card">
+        <h1>Hóa học 11</h1>
+        <p>Trang dành cho nội dung Hóa 11.</p>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 H&T STUDY</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("open");
+}
+</script>
+</body>
+</html>
