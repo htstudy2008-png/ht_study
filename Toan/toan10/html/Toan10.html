@@ -8,13 +8,15 @@
     <!-- CSS riêng của Toán 10 -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <!-- JS đăng nhập: đường dẫn TƯƠNG ĐỐI, không dùng "/" -->
+    <!-- JS đăng nhập: đường dẫn TƯƠNG ĐỐI, KHÔNG dùng "/" -->
     <script src="../../../dang-nhap/js/auth.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Bắt buộc đăng nhập mới xem được trang Toán 10
+      // Bắt buộc đăng nhập mới xem được Toán 10
+      if (typeof requireAuth === "function") {
         requireAuth();
-      });
+      } else {
+        console.error("requireAuth chưa được định nghĩa – kiểm tra lại đường dẫn auth.js");
+      }
     </script>
 </head>
 <body>
@@ -22,6 +24,7 @@
 <header class="header">
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
+    <!-- SIDEBAR -->
     <nav id="sidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
 
@@ -42,15 +45,17 @@
             <a href="../../../Hoa/hoa12/html/Hoa12.html" data-need-login>Hóa 12</a>
         </div>
 
-        <!-- Nút đăng nhập trong sidebar -->
+        <!-- Nút Đăng nhập / Đăng xuất trong sidebar -->
         <a href="../../../dang-nhap/html/login.html" id="auth-button-sidebar">Đăng nhập</a>
     </nav>
 
+    <!-- LOGO + TÊN TRANG -->
     <div class="logo-title">
         <img src="../../../hinh_anh/logo.png" alt="H&T STUDY Logo">
         <span class="site-title">H&T STUDY</span>
     </div>
 
+    <!-- MENU NGANG -->
     <nav class="top-nav">
         <ul>
             <li><a href="../../../trang_chu/html/index.html">Trang chủ</a></li>
@@ -75,7 +80,7 @@
         </ul>
     </nav>
 
-    <!-- AVATAR GÓC PHẢI -->
+    <!-- AVATAR + DROPDOWN -->
     <div class="user-menu">
         <button class="avatar-btn" id="avatar-btn">HS</button>
         <div class="user-dropdown" id="user-dropdown">
@@ -86,6 +91,7 @@
                 <hr>
                 <button class="user-dropdown-link" id="btn-my-courses">Khóa học của tôi</button>
                 <button class="user-dropdown-link" id="btn-guide">Hướng dẫn</button>
+                <button class="user-dropdown-link" id="btn-change-avatar">Đổi avatar</button>
                 <button class="user-dropdown-link user-auth-btn" id="user-auth-btn">Đăng nhập</button>
             </div>
         </div>
