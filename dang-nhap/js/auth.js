@@ -7,7 +7,7 @@ function getBasePath() {
   // Nếu host là *.github.io → đang chạy trên GitHub Pages
   if (window.location.hostname.endsWith("github.io")) {
     // Ví dụ: /HT-STUDY/trang_chu/html/index.html
-    const parts = window.location.pathname.split("/"); 
+    const parts = window.location.pathname.split("/");
     // parts[0] = "", parts[1] = "TEN_REPO"
     if (parts.length > 2 && parts[1]) {
       return "/" + parts[1]; // "/TEN_REPO"
@@ -50,9 +50,18 @@ function logout() {
   location.reload();
 }
 
+// Lưu đường dẫn để quay lại sau login
 function saveRedirect(url) {
-  // nếu không truyền url → lưu path hiện tại (bao gồm cả BASE_PATH nếu có)
-  localStorage.setItem("htstudy_redirect", url || window.location.pathname);
+  let path;
+  if (url && typeof url === "string" && url.startsWith("http")) {
+    const u = new URL(url);
+    path = u.pathname;
+  } else if (url) {
+    path = url;
+  } else {
+    path = window.location.pathname;
+  }
+  localStorage.setItem("htstudy_redirect", path);
 }
 
 function loadRedirect() {
@@ -118,8 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       if (!getCurrentUser()) {
         e.preventDefault();
-        // Lưu lại href tương đối của link
-        saveRedirect(link.getAttribute("href"));
+        // Lưu luôn đường dẫn tuyệt đối (pathname) của link
+        saveRedirect(link.href);
         window.location.href = LOGIN_PAGE;
       }
     });
@@ -143,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } else {
         setCurrentUser({ code: found.code, name: found.name });
-        // Sau khi đăng nhập → chuyển về trang đã lưu, nếu không có thì về HOME_PAGE
         window.location.href = loadRedirect();
       }
     });
@@ -240,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
       changeAvatarBtn.addEventListener("click", () => {
         const u = getCurrentUser();
         if (!u) {
-          // chưa đăng nhập thì đưa sang trang login
+          showAvatarAlert("⚠ Bạn cần đăng nhập trước khi đổi avatar.");
           saveRedirect(window.location.pathname);
           window.location.href = LOGIN_PAGE;
           return;
@@ -294,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Chỉ còn nút ở sidebar
+  // Nút ở sidebar (nếu có)
   setupAuthButton(document.getElementById("auth-button-sidebar"));
 });
 // ==========================
