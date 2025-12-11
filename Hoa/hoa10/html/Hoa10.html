@@ -9,7 +9,7 @@
 
     <script src="../../../dang-nhap/js/auth.js"></script>
     <script>
-      if (type of requireAuth === "function") {
+      if (typeof requireAuth === "function") {
         requireAuth();
       } else{
         console.error("requireAuth chưa được định nghĩa – kiểm tra lại đường dẫn auth.js");
@@ -111,3 +111,4 @@ function toggleMenu() {
 
 </body>
 </html>
+
