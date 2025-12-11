@@ -2,9 +2,26 @@
 //  HỆ THỐNG ĐĂNG NHẬP H&T STUDY
 // ==========================
 
-// dùng đường dẫn tuyệt đối để trang nào bấm cũng được
-const LOGIN_PAGE = "/dang-nhap/html/login.html";
-const HOME_PAGE  = "/trang_chu/html/Index.html";
+// TÍNH BASE PATH CHO GITHUB PAGES (project site)
+function getBasePath() {
+  // Nếu host là *.github.io → đang chạy trên GitHub Pages
+  if (window.location.hostname.endsWith("github.io")) {
+    // Ví dụ: /HT-STUDY/trang_chu/html/index.html
+    const parts = window.location.pathname.split("/"); 
+    // parts[0] = "", parts[1] = "TEN_REPO"
+    if (parts.length > 2 && parts[1]) {
+      return "/" + parts[1]; // "/TEN_REPO"
+    }
+  }
+  // Nếu chạy local (localhost, file://, hoặc deploy ở root) thì không cần base
+  return "";
+}
+
+const BASE_PATH  = getBasePath();
+
+// KHÔNG dùng "/" trần nữa, luôn gắn BASE_PATH
+const LOGIN_PAGE = BASE_PATH + "/dang-nhap/html/login.html";
+const HOME_PAGE  = BASE_PATH + "/trang_chu/html/index.html";
 
 // Danh sách học sinh (tự thêm/sửa ở đây)
 const STUDENTS = [
@@ -34,6 +51,7 @@ function logout() {
 }
 
 function saveRedirect(url) {
+  // nếu không truyền url → lưu path hiện tại (bao gồm cả BASE_PATH nếu có)
   localStorage.setItem("htstudy_redirect", url || window.location.pathname);
 }
 
@@ -100,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       if (!getCurrentUser()) {
         e.preventDefault();
+        // Lưu lại href tương đối của link
         saveRedirect(link.getAttribute("href"));
         window.location.href = LOGIN_PAGE;
       }
@@ -124,6 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } else {
         setCurrentUser({ code: found.code, name: found.name });
+        // Sau khi đăng nhập → chuyển về trang đã lưu, nếu không có thì về HOME_PAGE
         window.location.href = loadRedirect();
       }
     });
