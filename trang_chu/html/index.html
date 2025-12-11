@@ -4,24 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H&T STUDY - Trang chủ</title>
-
-    <!-- CSS của trang chủ -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <header class="header">
-    <!-- Icon mở sidebar -->
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-    <!-- SIDEBAR -->
     <nav id="sidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
 
-        <!-- ⭐ Trang chủ -->
         <a href="index.html" class="active">Trang chủ</a>
 
-        <!-- Mục Toán -->
         <div class="sidebar-section">
             <span class="sidebar-title">Toán</span>
             <a href="../../Toan/toan10/html/Toan10.html" data-need-login>Toán 10</a>
@@ -29,7 +23,6 @@
             <a href="../../Toan/toan12/html/Toan12.html" data-need-login>Toán 12</a>
         </div>
 
-        <!-- Mục Hóa -->
         <div class="sidebar-section">
             <span class="sidebar-title">Hóa</span>
             <a href="../../Hoa/hoa10/html/Hoa10.html" data-need-login>Hóa 10</a>
@@ -37,17 +30,14 @@
             <a href="../../Hoa/hoa12/html/Hoa12.html" data-need-login>Hóa 12</a>
         </div>
 
-        <!-- Nút đăng nhập trong sidebar -->
         <a href="../../dang-nhap/html/login.html" id="auth-button-sidebar">Đăng nhập</a>
     </nav>
 
-    <!-- LOGO + Tên trang -->
     <div class="logo-title">
         <img src="../../hinh_anh/logo.png" alt="H&T STUDY Logo">
         <span class="site-title">H&T STUDY</span>
     </div>
 
-    <!-- MENU NGANG -->
     <nav class="top-nav">
         <ul>
             <li><a href="index.html" class="active">Trang chủ</a></li>
@@ -55,40 +45,46 @@
             <li class="dropdown">
                 <a href="#">Toán</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../../Toan/toan10/html/Toan10.html">Toán 10</a></li>
-                    <li><a href="../../Toan/toan11/html/Toan11.html">Toán 11</a></li>
-                    <li><a href="../../Toan/toan12/html/Toan12.html">Toán 12</a></li>
+                    <li><a href="../../Toan/toan10/html/Toan10.html" data-need-login>Toán 10</a></li>
+                    <li><a href="../../Toan/toan11/html/Toan11.html" data-need-login>Toán 11</a></li>
+                    <li><a href="../../Toan/toan12/html/Toan12.html" data-need-login>Toán 12</a></li>
                 </ul>
             </li>
 
             <li class="dropdown">
                 <a href="#">Hóa</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../../Hoa/hoa10/html/Hoa10.html">Hóa 10</a></li>
-                    <li><a href="../../Hoa/hoa11/html/Hoa11.html">Hóa 11</a></li>
-                    <li><a href="../../Hoa/hoa12/html/Hoa12.html">Hóa 12</a></li>
+                    <li><a href="../../Hoa/hoa10/html/Hoa10.html" data-need-login>Hóa 10</a></li>
+                    <li><a href="../../Hoa/hoa11/html/Hoa11.html" data-need-login>Hóa 11</a></li>
+                    <li><a href="../../Hoa/hoa12/html/Hoa12.html" data-need-login>Hóa 12</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 
-    <!-- USER MENU (Avatar) -->
+    <!-- AVATAR GÓC PHẢI -->
     <div class="user-menu">
-        <button class="avatar-btn" id="avatar-btn">HT</button>
+        <button class="avatar-btn" id="avatar-btn">HS</button>
 
         <div class="user-dropdown" id="user-dropdown">
             <div class="user-dropdown-inner">
                 <div class="user-label">Học sinh</div>
                 <div class="user-name" id="user-name-display">Chưa đăng nhập</div>
-                <div class="user-code" id="user-code-display"></div>
+                <div class="user-code" id="user-code-display">Mã học sinh: ---</div>
 
                 <hr>
 
-                <button class="user-dropdown-link" id="btn-my-courses">Khóa học của tôi</button>
+                <button class="user-dropdown-link" id="btn-my-courses">
+                    Khóa học của tôi
+                </button>
 
-                <button class="user-dropdown-link" id="btn-guide">Hướng dẫn</button>
+                <button class="user-dropdown-link" id="btn-guide">
+                    Hướng dẫn
+                </button>
 
-                <button class="user-dropdown-link" id="btn-change-avatar">Đổi avatar</button>
+                <button class="user-dropdown-link" id="btn-change-avatar">
+                    Đổi avatar
+                </button>
 
                 <button class="user-dropdown-link user-auth-btn" id="user-auth-btn">
                     Đăng nhập
@@ -96,22 +92,33 @@
             </div>
         </div>
     </div>
+
+    <input type="file" id="avatar-file" accept="image/*" style="display:none">
+
+    <div id="avatar-alert" style="
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        backdrop-filter: blur(6px);
+        display: none;
+        z-index: 2000;
+        transition: opacity 0.6s ease;
+    "></div>
 </header>
 
-
-<!-- =================== NỘI DUNG TRANG CHỦ =================== -->
 <main class="content">
-
-    <!-- Thẻ chào mừng -->
+    <!-- Khối chào mừng -->
     <div class="card hero-card">
         <h1>Chào mừng đến H&T STUDY</h1>
         <p>Chọn môn ở menu ngang hoặc mở sidebar bằng nút ☰.</p>
     </div>
 
-    <!-- Lưới 2 cột: khóa học + bài viết -->
     <section class="home-grid">
-
-        <!-- KHÓA HỌC NỔI BẬT -->
+        <!-- Khóa học nổi bật -->
         <div class="home-courses">
             <div class="section-header">
                 <h2>Khóa học nổi bật</h2>
@@ -119,14 +126,13 @@
             </div>
 
             <div class="course-slider">
-                <button class="slider-btn slider-btn-prev">&lt;</button>
+                <button class="slider-btn slider-btn-prev" aria-label="Khóa trước">&lt;</button>
 
                 <div class="course-track-wrapper">
                     <div class="course-track">
-
                         <!-- Slide 1 -->
                         <article class="course-card">
-                            <img src="../../hinh_anh/toan_xps.png" alt="Khóa học Toán">
+                            <img src="../../hinh_anh/toan_xps.png" alt="Khóa Toán XPS">
                             <div class="course-overlay">
                                 <div class="course-pill">Toán 10–11–12</div>
                                 <h3>Khóa XPS Nền tảng</h3>
@@ -139,11 +145,11 @@
 
                         <!-- Slide 2 -->
                         <article class="course-card">
-                            <img src="../../hinh_anh/toan_captoc.png" alt="Khóa học Toán">
+                            <img src="../../hinh_anh/toan_captoc.png" alt="Khóa Toán cấp tốc">
                             <div class="course-overlay">
                                 <div class="course-pill">Toán cấp tốc</div>
                                 <h3>Khóa Toán cấp tốc</h3>
-                                <p>Ôn siêu nhanh trước kiểm tra — tập trung công thức & mẹo.</p>
+                                <p>Ôn siêu nhanh trước kiểm tra — tập trung công thức &amp; mẹo.</p>
                                 <div class="course-meta">
                                     <span>4 tuần</span><span>Checkpoint theo chương</span>
                                 </div>
@@ -152,7 +158,7 @@
 
                         <!-- Slide 3 -->
                         <article class="course-card">
-                            <img src="../../hinh_anh/toan_luyende.png" alt="Khóa học Toán">
+                            <img src="../../hinh_anh/toan_luyende.png" alt="Khóa Toán luyện đề">
                             <div class="course-overlay">
                                 <div class="course-pill">Luyện đề</div>
                                 <h3>Khóa Toán Luyện Đề</h3>
@@ -169,7 +175,8 @@
                             <h3>Khóa Hóa XPS phản ứng</h3>
                             <p>Tổng hợp phương pháp giải nhanh bảo toàn, đường chéo, tăng giảm khối lượng.</p>
                             <div class="course-meta">
-                                <span>10 chuyên đề</span><span>Ví dụ minh họa</span>
+                                <span>10 chuyên đề</span>
+                                <span>Ví dụ minh họa</span>
                             </div>
                         </article>
 
@@ -179,19 +186,18 @@
                             <h3>Khóa Cấp tốc vô cơ – hữu cơ</h3>
                             <p>Map kiến thức dễ quên, tập trung vào phần hay bị “mất điểm oan”.</p>
                             <div class="course-meta">
-                                <span>6 tuần</span><span>Checklist ôn thi</span>
+                                <span>6 tuần</span>
+                                <span>Checklist ôn thi</span>
                             </div>
                         </article>
-
                     </div>
                 </div>
 
-                <button class="slider-btn slider-btn-next">&gt;</button>
+                <button class="slider-btn slider-btn-next" aria-label="Khóa tiếp">&gt;</button>
             </div>
         </div>
 
-
-        <!-- BÀI VIẾT GẦN ĐÂY -->
+        <!-- Bài viết gần đây -->
         <aside class="home-recent">
             <div class="section-header">
                 <h2>Bài viết gần đây</h2>
@@ -206,25 +212,24 @@
                 </li>
 
                 <li class="recent-item">
-                    <h3>Sơ đồ tư duy phản ứng oxi hóa – khử dễ học</h3>
+                    <h3>Sơ đồ tư duy phản ứng oxi hóa – khử “dễ nuốt”</h3>
                     <p>Tóm tắt toàn bộ lý thuyết quan trọng trong 1 sơ đồ.</p>
                     <span class="recent-tag">Hóa 11 • Lý thuyết</span>
                 </li>
 
                 <li class="recent-item">
                     <h3>Lộ trình 4 tuần ôn lại hàm số từ A–Z</h3>
-                    <p>Dành cho học sinh cần lấy lại tốc độ.</p>
+                    <p>Phù hợp cho bạn bị “mất gốc nhẹ” nhưng cần lấy lại nhanh.</p>
                     <span class="recent-tag">Toán 11 • XPS</span>
                 </li>
 
                 <li class="recent-item">
                     <h3>Checklist trước khi làm đề thi thử</h3>
-                    <p>Cách để mỗi đề thi thử là một bước tiến.</p>
+                    <p>Cần chuẩn bị gì để 1 lần làm đề là 1 lần tiến bộ?</p>
                     <span class="recent-tag">Tips học tập</span>
                 </li>
             </ul>
         </aside>
-
     </section>
 </main>
 
@@ -232,8 +237,6 @@
     <p>&copy; 2025 H&T STUDY</p>
 </footer>
 
-
-<!-- ================== JAVASCRIPT ================== -->
 <script>
 function toggleMenu() {
     const sidebar = document.getElementById("sidebar");
@@ -241,7 +244,7 @@ function toggleMenu() {
 }
 </script>
 
-<!-- Slider -->
+<!-- Slider JS (giữ y như bạn có thể đang dùng) -->
 <script>
 (function () {
     const track = document.querySelector(".course-track");
@@ -255,25 +258,68 @@ function toggleMenu() {
         track.style.transform = `translateX(${offset}%)`;
     }
 
-    document.querySelector(".slider-btn-next").onclick = () => {
+    const btnPrev = document.querySelector(".slider-btn-prev");
+    const btnNext = document.querySelector(".slider-btn-next");
+
+    if (btnPrev) {
+        btnPrev.addEventListener("click", () => {
+            index = (index - 1 + cards.length) % cards.length;
+            updateSlider();
+        });
+    }
+
+    if (btnNext) {
+        btnNext.addEventListener("click", () => {
+            index = (index + 1) % cards.length;
+            updateSlider();
+        });
+    }
+
+    const wrapper = document.querySelector(".course-track-wrapper");
+    if (wrapper) {
+        wrapper.addEventListener("wheel", (e) => {
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    }
+})();
+</script>
+
+<script>
+(function () {
+    const track = document.querySelector(".course-track");
+    if (!track) return;
+    const cards = Array.from(track.children);
+    let index = 0;
+
+    function updateSlider() {
+        const offset = -index * 100;
+        track.style.transform = `translateX(${offset}%)`;
+    }
+
+    const next = () => {
         index = (index + 1) % cards.length;
         updateSlider();
     };
 
-    document.querySelector(".slider-btn-prev").onclick = () => {
+    const prev = () => {
         index = (index - 1 + cards.length) % cards.length;
         updateSlider();
     };
 
-    // Auto slide
-    setInterval(() => {
-        index = (index + 1) % cards.length;
-        updateSlider();
-    }, 8000);
+    const btnNext = document.querySelector(".slider-btn-next");
+    const btnPrev = document.querySelector(".slider-btn-prev");
+
+    if (btnNext) btnNext.onclick = next;
+    if (btnPrev) btnPrev.onclick = prev;
+
+    // Tự trượt 8 giây
+    setInterval(next, 8000);
 })();
 </script>
 
-<!-- Script đăng nhập -->
+<!-- Auth system -->
 <script src="../../dang-nhap/js/auth.js"></script>
 
 </body>
