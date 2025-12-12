@@ -383,3 +383,76 @@ footer {
     color: #fff;
     font-size: 16px;
 }
+/* ================================
+   FIX RESPONSIVE CHUẨN CHO TOAN 12
+================================ */
+@media (max-width: 900px) {
+
+    /* Hero xuống 1 cột */
+    .course-hero-inner {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 28px !important;
+    }
+
+    /* Hình không bị phóng to */
+    .thumb-box {
+        max-width: 280px !important;
+        margin: 0 auto !important;
+        padding: 20px !important;
+    }
+
+    .thumb-box img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 220px !important;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Giảm chữ cho phù hợp */
+    .course-meta h1 {
+        font-size: 26px !important;
+        text-align: center;
+    }
+
+    /* Stats xuống 2 cột */
+    .course-stats {
+        grid-template-columns: repeat(2,1fr) !important;
+    }
+
+    /* Nút lớn hơn, dễ bấm */
+    .btn-primary {
+        width: 100%;
+        padding: 14px 0;
+        text-align: center;
+        font-size: 16px !important;
+    }
+
+    .course-price {
+        text-align: center;
+        font-size: 28px !important;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .course-hero {
+        padding: 24px !important;
+    }
+
+    .thumb-box {
+        max-width: 240px !important;
+        padding: 18px !important;
+    }
+
+    .course-meta h1 {
+        font-size: 22px !important;
+    }
+
+    .content,
+    .page-content {
+        padding: 16px !important;
+    }
+}
+
