@@ -355,3 +355,142 @@ footer {
 @media (max-width: 768px) {
     .top-nav { display: none; }
 }
+/* ============================================
+   STYLE MỚI CHO KHUNG NỘI DUNG (TOÁN 12)
+============================================ */
+
+/* Nền vàng gradient nhẹ, sang hơn */
+.course-hero {
+    background: linear-gradient(135deg, #f6c44f, #f0b324);
+    padding: 40px;
+    border-radius: 22px;
+    color: #1e293b;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Bố cục 2 cột */
+.course-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(260px, 380px) 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Khung ảnh – trắng tinh + bóng mềm */
+.thumb-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.thumb-tag {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* Tiêu đề */
+.course-meta h1 {
+    font-size: 34px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 16px;
+}
+
+/* Các ô thông tin */
+.course-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.stat {
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(4px);
+    border-radius: 14px;
+    padding: 14px 10px;
+    text-align: center;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* Giá */
+.course-price {
+    font-size: 30px;
+    font-weight: 800;
+    color: #b91c1c;
+}
+
+/* Nút chính */
+.btn-primary {
+    background: linear-gradient(90deg, #2563eb, #1e40af);
+    color: #fff !important;
+    padding: 14px 26px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(37,99,235,0.4);
+}
+
+/* ============================================
+   RESPONSIVE MOBILE
+============================================ */
+@media (max-width: 900px) {
+
+    .course-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .thumb-box {
+        max-width: 260px;
+        margin: 0 auto;
+        padding: 22px;
+    }
+
+    .course-meta h1 {
+        text-align: center;
+        font-size: 26px;
+    }
+
+    .course-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 14px 0;
+    }
+
+    .course-price {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .course-hero {
+        padding: 22px;
+    }
+
+    .thumb-box {
+        padding: 18px;
+    }
+
+    .course-meta h1 {
+        font-size: 22px;
+    }
+}
+
