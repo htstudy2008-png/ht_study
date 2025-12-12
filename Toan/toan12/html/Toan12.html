@@ -9,11 +9,26 @@
 
     <script src="../../../dang-nhap/js/auth.js"></script>
     <script>
-      if (typeof requireAuth === "function") {
-        requireAuth();
-      } else {
-        console.error("requireAuth chưa được định nghĩa – kiểm tra lại đường dẫn auth.js");
-      }
+        // KIỂM TRA ĐĂNG NHẬP
+        if (typeof requireAuth === "function") {
+            requireAuth();
+        }
+
+        // KIỂM TRA QUYỀN TRUY CẬP KHÓA
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = JSON.parse(localStorage.getItem("currentUser"));
+            if (!user) return;
+
+            document.body.classList.add("logged-in");
+
+            const ownedCourses = JSON.parse(localStorage.getItem("courses")) || [];
+
+            if (ownedCourses.includes("toan12")) {
+                document.body.classList.add("has-course-access");
+            } else {
+                document.body.classList.add("no-course-access");
+            }
+        });
     </script>
 </head>
 <body>
@@ -23,21 +38,20 @@
 
     <nav id="sidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
-
         <a href="../../../trang_chu/html/index.html">Trang chủ</a>
 
         <div class="sidebar-section">
             <span class="sidebar-title">Toán</span>
-            <a href="../../toan10/html/Toan10.html" data-need-login>Toán 10</a>
-            <a href="../../toan11/html/Toan11.html" data-need-login>Toán 11</a>
-            <a href="Toan12.html" class="active" data-need-login>Toán 12</a>
+            <a href="../../toan10/html/Toan10.html">Toán 10</a>
+            <a href="../../toan11/html/Toan11.html">Toán 11</a>
+            <a href="Toan12.html" class="active">Toán 12</a>
         </div>
 
         <div class="sidebar-section">
             <span class="sidebar-title">Hóa</span>
-            <a href="../../../Hoa/hoa10/html/Hoa10.html" data-need-login>Hóa 10</a>
-            <a href="../../../Hoa/hoa11/html/Hoa11.html" data-need-login>Hóa 11</a>
-            <a href="../../../Hoa/hoa12/html/Hoa12.html" data-need-login>Hóa 12</a>
+            <a href="../../../Hoa/hoa10/html/Hoa10.html">Hóa 10</a>
+            <a href="../../../Hoa/hoa11/html/Hoa11.html">Hóa 11</a>
+            <a href="../../../Hoa/hoa12/html/Hoa12.html">Hóa 12</a>
         </div>
 
         <a href="../../../dang-nhap/html/login.html" id="auth-button-sidebar">Đăng nhập</a>
@@ -55,18 +69,18 @@
             <li class="dropdown">
                 <a href="#" class="active">Toán</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../../toan10/html/Toan10.html" data-need-login>Toán 10</a></li>
-                    <li><a href="../../toan11/html/Toan11.html" data-need-login>Toán 11</a></li>
-                    <li><a href="Toan12.html" class="active" data-need-login>Toán 12</a></li>
+                    <li><a href="../../toan10/html/Toan10.html">Toán 10</a></li>
+                    <li><a href="../../toan11/html/Toan11.html">Toán 11</a></li>
+                    <li><a href="Toan12.html" class="active">Toán 12</a></li>
                 </ul>
             </li>
 
             <li class="dropdown">
                 <a href="#">Hóa</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../../../Hoa/hoa10/html/Hoa10.html" data-need-login>Hóa 10</a></li>
-                    <li><a href="../../../Hoa/hoa11/html/Hoa11.html" data-need-login>Hóa 11</a></li>
-                    <li><a href="../../../Hoa/hoa12/html/Hoa12.html" data-need-login>Hóa 12</a></li>
+                    <li><a href="../../../Hoa/hoa10/html/Hoa10.html">Hóa 10</a></li>
+                    <li><a href="../../../Hoa/hoa11/html/Hoa11.html">Hóa 11</a></li>
+                    <li><a href="../../../Hoa/hoa12/html/Hoa12.html">Hóa 12</a></li>
                 </ul>
             </li>
         </ul>
@@ -87,15 +101,46 @@
             </div>
         </div>
     </div>
-    <input type="file" id="avatar-file" accept="image/*" style="display:none">
-    <div id="avatar-alert" style="display:none;"></div>
 </header>
 
 <main class="content">
-    <div class="card">
-        <h1>Toán 12</h1>
-        <p>Trang dành cho nội dung Toán 12.</p>
+
+    <!-- 🎯 BANNER GIỐNG TRONG ẢNH -->
+    <section class="course-hero">
+        <div class="course-hero-inner">
+
+            <div class="thumb-box">
+                <span class="thumb-tag">KHÓA TRẢI NGHIỆM</span>
+                <img src="../../../hinh_anh/logo.png" alt="Toán 12" style="width:180px;">
+            </div>
+
+            <div class="course-meta">
+                <h1>KHÓA TOÁN 12</h1>
+
+                <div class="course-stats">
+                    <div class="stat"><strong>0</strong><br>Thời gian</div>
+                    <div class="stat"><strong>23</strong><br>Bài học</div>
+                    <div class="stat"><strong>10.000+</strong><br>Học viên</div>
+                    <div class="stat"><strong>5/5</strong><br>Đánh giá</div>
+                </div>
+
+                <div class="course-price">1.000.000 đ</div>
+
+                <button id="btn-view-course" class="btn-primary">
+                    Xem nội dung khóa học
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NỘI DUNG KHÓA HỌC (CHỈ HIỆN KHI ĐÃ MUA) -->
+    <div id="course-content" class="card" style="margin-top:40px; display:none;">
+        <h2>Nội dung bài giảng</h2>
+        <p>• Video bài giảng 1</p>
+        <p>• Video bài giảng 2</p>
+        <p>• Video bài giảng 3</p>
     </div>
+
 </main>
 
 <footer>
@@ -104,9 +149,16 @@
 
 <script>
 function toggleMenu() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("open");
+    document.getElementById("sidebar").classList.toggle("open");
 }
+
+// Ẩn/hiện nội dung theo quyền access
+document.addEventListener("DOMContentLoaded", () => {
+    const hasAccess = document.body.classList.contains("has-course-access");
+    if (hasAccess) {
+        document.getElementById("course-content").style.display = "block";
+    }
+});
 </script>
 
 </body>
