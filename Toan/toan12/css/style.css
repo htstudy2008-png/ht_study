@@ -1,4 +1,6 @@
-/* ========== RESET ========== */
+/* ======================================================
+   RESET + BASE
+   ====================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -12,15 +14,16 @@ body {
     color: #e2e8f0;
 }
 
-/* ========== HEADER ========== */
+/* ======================================================
+   HEADER
+   ====================================================== */
 .header {
     width: 100%;
     height: 80px;
-    background: radial-gradient(circle at top, #020617 0%, #020617 60%, #020617 100%);
+    background: #020617;
     border-bottom: 1px solid rgba(148,163,184,0.4);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     padding: 0 24px;
     position: fixed;
     top: 0;
@@ -29,7 +32,6 @@ body {
     box-shadow: 0 12px 32px rgba(15,23,42,0.9);
 }
 
-/* nút ☰ */
 .menu-icon {
     font-size: 26px;
     cursor: pointer;
@@ -37,7 +39,6 @@ body {
     margin-right: 14px;
 }
 
-/* logo + tên web */
 .logo-title {
     display: flex;
     align-items: center;
@@ -56,12 +57,13 @@ body {
     color: #f9fafb;
 }
 
-/* ========== TOP NAV + DROPDOWN ========== */
+/* ======================================================
+   TOP NAV + DROPDOWN
+   ====================================================== */
 .top-nav {
     margin-left: auto;
 }
 
-/* chỉ flex cho ul cấp 1 của top-nav */
 .top-nav > ul {
     list-style: none;
     display: flex;
@@ -71,10 +73,8 @@ body {
 
 .top-nav li {
     position: relative;
-    z-index: 1; /* tránh các menu đè nhau kỳ lạ */
 }
 
-/* link ở header */
 .top-nav a {
     color: #e5e7eb;
     text-decoration: none;
@@ -90,195 +90,89 @@ body {
     color: #bfdbfe;
 }
 
-/* active pill */
 .top-nav a.active {
     background: linear-gradient(90deg,
         rgba(37,99,235,0.96),
         rgba(59,130,246,0.9));
     color: #e0f2fe;
     font-weight: 700;
-    box-shadow: 0 0 0 1px rgba(191,219,254,0.45),
-                0 10px 25px rgba(15,23,42,0.9);
 }
 
-/* dropdown arrow */
 .dropdown > a::after {
     content: "▾";
     font-size: 9px;
     margin-left: 6px;
-    opacity: 0.8;
 }
 
-/* --- DROPDOWN MENU VIP --- */
-
-/* menu cha */
-.dropdown {
-    position: relative;
-}
-
-/* ẩn menu con mặc định */
 .dropdown-menu {
     display: none;
-    list-style: none;
-
     position: absolute;
-    top: calc(100% + 8px);  /* ngay dưới chữ Toán / Hóa */
+    top: calc(100% + 8px);
     left: 0;
     min-width: 180px;
-
-    background: radial-gradient(circle at top left,
-                 rgba(15,23,42,0.98),
-                 rgba(15,23,42,0.96));
-    backdrop-filter: blur(16px);
+    background: rgba(15,23,42,0.98);
     border-radius: 16px;
     padding: 8px 0;
-    border: 1px solid rgba(148,163,184,0.7);
+    border: 1px solid rgba(148,163,184,0.6);
     box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-    overflow: hidden;
     z-index: 1200;
-
-    /* xếp dọc các item */
-    flex-direction: column;
 }
 
-/* mở dropdown khi hover hoặc focus vào .dropdown */
-.dropdown:hover > .dropdown-menu,
-.dropdown:focus-within > .dropdown-menu {
-    display: flex;
-    animation: dropdownFade 0.18s ease-out;
-}
-
-/* item trong dropdown xếp DỌC */
-.dropdown-menu li {
-    width: 100%;
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .dropdown-menu li a {
     display: block;
     padding: 9px 18px;
-    text-transform: none;
-    letter-spacing: 0.04em;
     font-size: 14px;
-    border-radius: 0;
     color: #e5e7eb;
 }
 
 .dropdown-menu li a:hover {
-    background: rgba(37,99,235,0.22);
-    color: #f9fafb;
+    background: rgba(37,99,235,0.25);
 }
 
-.dropdown-menu li a.active {
-    background: linear-gradient(90deg,
-        rgba(37,99,235,0.95),
-        rgba(59,130,246,0.9));
-    color: #e0f2fe;
-    font-weight: 600;
-}
-
-/* ===== AVATAR + MENU NGƯỜI DÙNG ===== */
-
+/* ======================================================
+   USER / AVATAR
+   ====================================================== */
 .user-menu {
-    position: relative;
     margin-left: 16px;
+    position: relative;
 }
 
 .avatar-btn {
     width: 36px;
     height: 36px;
     border-radius: 999px;
-    border: 1px solid rgba(148,163,184,0.8);
-    background: radial-gradient(circle at top,
-                rgba(148,163,184,0.18), transparent 55%),
-                #020617;
+    border: 1px solid rgba(148,163,184,0.7);
+    background: #020617;
     color: #e5e7eb;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    box-shadow: 0 0 0 1px rgba(15,23,42,1),
-                0 8px 18px rgba(15,23,42,0.9);
+    cursor: pointer;
 }
 
-.avatar-btn:hover {
-    border-color: rgba(191,219,254,0.9);
-}
-
-/* Dropdown info */
 .user-dropdown {
-    position: absolute;
-    top: 48px;
+position: absolute;
     right: 0;
-    width: 230px;
+    top: 52px;
+    min-width: 220px;
     background: rgba(15,23,42,0.98);
     border-radius: 16px;
-    border: 1px solid rgba(148,163,184,0.8);
+    padding: 10px 0;
+    border: 1px solid rgba(148,163,184,0.6);
     box-shadow: 0 18px 40px rgba(0,0,0,0.8);
-    padding: 6px 0;
     display: none;
-    z-index: 2000;
 }
 
 .user-dropdown.open {
     display: block;
 }
 
-.user-dropdown-inner {
-    padding: 8px 14px 10px;
-}
-
-.user-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: #9ca3af;
-    margin-bottom: 2px;
-}
-
-.user-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #e5e7eb;
-}
-
-.user-code {
-    font-size: 12px;
-    color: #9ca3af;
-    margin-bottom: 8px;
-}
-
-.user-dropdown hr {
-    border: none;
-    border-top: 1px solid rgba(55,65,81,0.9);
-    margin: 6px -6px 6px;
-}
-
-.user-dropdown-link {
-    display: block;
-    width: 100%;
-    text-align: left;
-    font-size: 13px;
-    color: #e5e7eb;
-    padding: 6px 6px;
-    border-radius: 8px;
-    text-decoration: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-}
-
-.user-dropdown-link:hover {
-    background: rgba(37,99,235,0.30);
-}
-
-.user-auth-btn {
-    margin-top: 4px;
-}
-
-/* ========== SIDEBAR TRƯỢT ========== */
+/* ======================================================
+   SIDEBAR
+   ====================================================== */
 .sidebar {
     height: 100%;
     width: 0;
@@ -291,7 +185,6 @@ body {
     padding-top: 80px;
     z-index: 1500;
     border-right: 1px solid rgba(148,163,184,0.6);
-    box-shadow: 12px 0 30px rgba(0,0,0,0.85);
 }
 
 .sidebar.open {
@@ -303,90 +196,126 @@ body {
     display: block;
     color: #e5e7eb;
     text-decoration: none;
-    font-size: 15px;
-    position: relative;
 }
 
-.sidebar a:hover {
-    background: radial-gradient(circle at left,
-              rgba(59,130,246,0.45) 0%, rgba(15,23,42,1) 60%);
-    color: #e0f2fe;
-}
-
-.sidebar .closebtn {
-    position: absolute;
-    top: 18px;
-    left: 20px;
-    font-size: 26px;
-}
-
-/* nhãn nhóm trong sidebar */
-.sidebar-section {
-    margin-top: 10px;
-}
-
-.sidebar-title {
-    display: block;
-    padding: 12px 22px 6px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #6b7280;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-}
-
-/* link đang active trong sidebar */
 .sidebar a.active {
     background: linear-gradient(90deg,
-                rgba(37,99,235,0.95),
-                rgba(59,130,246,0.85));
-    color: #e0f2fe;
+        rgba(37,99,235,0.95),
+        rgba(59,130,246,0.85));
     font-weight: 700;
-    border-radius: 0 999px 999px 0;
 }
 
-.sidebar a.active::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 6px;
-    bottom: 6px;
-    width: 3px;
-    border-radius: 999px;
-    background: #fbbf24;
-    box-shadow: 0 0 12px rgba(251,191,36,0.9);
-}
-
-/* ========== CONTENT ========== */
-.content {
+/* ======================================================
+   CONTENT – COMMON
+   ====================================================== */
+.content,
+.page-content {
     margin-top: 80px;
-    padding: 30px 40px;
+    padding: 28px 40px;
 }
 
 .card {
     max-width: 900px;
     margin: 0 auto;
-    background: radial-gradient(circle at top left,
-                rgba(15,23,42,1),
-                rgba(15,23,42,0.95));
+    background: rgba(15,23,42,0.95);
     border-radius: 18px;
-    padding: 26px 30px 30px;
+    padding: 26px;
     border: 1px solid rgba(148,163,184,0.6);
-    box-shadow: 0 24px 50px rgba(15,23,42,0.95);
 }
 
-.card h1 {
-    color: #f9fafb;
-    margin-bottom: 12px;
-    font-size: 28px;
+/* ======================================================
+   COURSE PAGE (TOÁN / HÓA)
+   ====================================================== */
+.course-hero {
+    background: linear-gradient(135deg,
+        rgba(37,99,235,0.95),
+        rgba(29,78,216,0.85),
+        rgba(15,23,42,0.95)
+    );
+    border-radius: 22px;
+    padding: 40px;
 }
 
-.card p {
-    color: #cbd5e1;
-    font-size: 15px;
+.course-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0,420px) minmax(0,1fr);
+    gap: 48px;
 }
 
-/* ========== FOOTER ========== */
+.thumb-box {
+    background: rgba(15,23,42,0.9);
+    border-radius: 20px;
+    padding: 44px 24px;
+    text-align: center;
+}
+
+.thumb-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    background: rgba(37,99,235,0.8);
+    margin-bottom: 14px;
+}
+
+.course-meta h1 {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.course-stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    background: rgba(15,23,42,0.6);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+}
+
+.course-price {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fde68a;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg,#fbbf24,#f59e0b);
+    color: #020617;
+    padding: 14px 28px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* ======================================================
+   PHÂN QUYỀN KHÓA HỌC
+   ====================================================== */
+.course-price,
+#btn-view-course {
+    display: none;
+}
+body.logged-in.no-course-access .course-price {
+    display: block;
+}
+
+body.logged-in.has-course-access #btn-view-course {
+    display: inline-block;
+}
+
+body.logged-in.has-course-access .course-price {
+    display: none;
+}
+
+/* ======================================================
+   FOOTER
+   ====================================================== */
 footer {
     text-align: center;
     padding: 20px;
@@ -394,419 +323,25 @@ footer {
     font-size: 13px;
 }
 
-/* ===== GRID TRANG CHỦ: KHÓA HỌC + BÀI VIẾT ===== */
-
-.hero-card {
-    margin-bottom: 24px;
-}
-
-/* Lưới 2 cột: trái to, phải nhỏ */
-.home-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(260px, 1.2fr);
-    gap: 8px;               /* khoảng cách gần giữa 2 khối */
-    align-items: stretch;
-}
-
-/* Header nhỏ phía trên mỗi khối */
-.section-header {
-    margin-bottom: 10px;
-}
-
-.section-header h2 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #e5e7eb;
-    margin: 0;
-}
-
-.section-header span {
-    font-size: 12px;
-    color: #9ca3af;
-}
-
-/* ===== SLIDER KHÓA HỌC ===== */
-
-.home-courses {
-    background: rgba(15,23,42,0.96);
-    border-radius: 18px;
-    padding: 14px 16px 16px;
-    border: 1px solid rgba(148,163,184,0.32);
-    box-shadow: 0 14px 32px rgba(15,23,42,0.9);
-    width: 100%;
-    max-width: 820px;
-    margin: 0 auto;
-}
-
-/* Thanh trượt */
-.course-slider {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 8px;
-}
-
-.course-track-wrapper {
-    width: 100%;
-    overflow: hidden;
-}
-
-/* Dải chứa các slide */
-.course-track {
-    display: flex;
-    gap: 0;
-    transition: transform 0.35s ease;
-}
-
-/* Mỗi slide = đúng 100% chiều rộng khung, cùng chiều cao */
-.course-card {
-    flex: 0 0 100%;
-    max-width: 100%;
-    height: 320px;
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
-    background: #020617;
-}
-
-/* Ảnh khóa học – hiển thị hết, không bị cắt */
-.course-card img {
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    object-position: center;
-    background-color: #020617;
-}
-
-/* Overlay thông tin ở dưới ảnh */
-.course-overlay {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 14px 16px 12px;
-    background: linear-gradient(to top,
-        rgba(2,6,23,0.95),
-        rgba(2,6,23,0.45),
-        transparent
-    );
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.course-pill {
-    display: inline-flex;
-    align-items: center;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    color: #e5e7eb;
-    background: rgba(37,99,235,0.3);
-    border: 1px solid rgba(129,140,248,0.7);
-}
-
-.course-card h3 {
-    font-size: 16px;
-    margin: 0;
-    color: #f9fafb;
-}
-
-.course-card p {
-    font-size: 13px;
-    color: #d1d5db;
-    margin: 0;
-}
-
-.course-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    font-size: 12px;
-    color: #9ca3af;
-}
-
-.course-meta span {
-    padding: 3px 8px;
-    border-radius: 999px;
-    background-color: rgba(15,23,42,0.9);
-    border: 1px solid rgba(55,65,81,0.8);
-}
-
-/* Nút mũi tên slider */
-.slider-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
-    border: 1px solid rgba(148,163,184,0.8);
-    background: radial-gradient(circle at top,
-                rgba(148,163,184,0.18), transparent 55%),
-                rgba(15,23,42,0.96);
-    color: #e5e7eb;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.slider-btn:hover {
-    background: rgba(37,99,235,0.9);
-    box-shadow: 0 0 0 1px rgba(191,219,254,0.6),
-                0 9px 18px rgba(37,99,235,0.6);
-    transform: translateY(-1px);
-}
-
-.slider-btn:active {
-    transform: translateY(0);
-}
-
-/* ===== BÀI VIẾT GẦN ĐÂY ===== */
-
-.home-recent {
-    background-color: rgba(15,23,42,0.96);
-    border-radius: 18px;
-    padding: 14px 14px 12px;
-    border: 1px solid rgba(148,163,184,0.32);
-    box-shadow: 0 14px 32px rgba(15,23,42,0.9);
-}
-
-.recent-list {
-    list-style: none;
-    padding: 0;
-    margin: 4px 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.recent-item {
-    padding: 8px 8px;
-    border-radius: 12px;
-    background: rgba(15,23,42,0.96);
-    border: 1px solid rgba(55,65,81,0.9);
-    cursor: pointer;
-    transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.recent-item h3 {
-    font-size: 13px;
-    color: #e5e7eb;
-    margin: 0 0 4px;
-}
-
-.recent-item p {
-    font-size: 12px;
-    color: #9ca3af;
-    margin: 0 0 4px;
-}
-
-.recent-tag {
-    font-size: 11px;
-    color: #bfdbfe;
-}
-
-/* Hover bài viết */
-.recent-item:hover {
-    background: radial-gradient(circle at top left, rgba(59,130,246,0.22), transparent 60%),
-                rgba(15,23,42,0.98);
-    box-shadow: 0 8px 18px rgba(15,23,42,0.9);
-    transform: translateY(-1px);
-}
-
-/* Thu nhỏ bề ngang phần slider bên trong khung Khóa học nổi bật */
-.home-courses .course-slider {
-    max-width: 88%;
-    margin: 0 auto;
-}
-
-/* ===== RESPONSIVE ===== */
-
-/* Tablet nhỏ / mobile lớn */
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
 @media (max-width: 900px) {
-    .home-grid {
-        grid-template-columns: minmax(0, 1fr);
+    .course-hero-inner {
+        grid-template-columns: 1fr;
+    }
+    .course-stats {
+        grid-template-columns: repeat(2,1fr);
     }
 }
 
-/* MOBILE (max-width: 768px) */
 @media (max-width: 768px) {
-
-    /* Ẩn top-nav, dùng sidebar và avatar */
     .top-nav {
         display: none;
     }
-
-    /* avatar đẩy sát phải */
-    .user-menu {
-        margin-left: auto;
-    }
-
-    /* Header mobile */
-    .header {
-        height: 64px;
-        padding: 0 16px;
-    }
-
-    .logo-title img {
-        height: 34px;
-    }
-
-    .site-title {
-        font-size: 16px;
-    }
-
-    /* Sidebar mobile */
-    .sidebar.open {
-        width: 80%;
-    }
-
-    /* Content */
-    .content {
-        padding: 24px 16px;
-    }
-
-    .card {
-        padding: 22px 18px;
-    }
-
-    /* Grid đổi thành 1 cột rõ ràng */
-    .home-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Khóa học nổi bật full width */
-    .home-courses {
-        max-width: 100%;
-        padding: 12px;
-    }
-
-    /* Slide cao hơn khi mobile */
-    .course-card {
-        height: 280px;
-    }
-
-    .course-card img {
-        object-fit: contain;
-    }
-
-    /* Bài viết gần đây full width */
-    .home-recent {
-        padding: 16px;
-    }
-}
-#auth-button {
-    display: none;
-}
-/* ========== AVATAR GÓC PHẢI ========== */
-.user-menu {
-    margin-left: 16px;
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-/* Nút avatar tròn */
-.avatar-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 999px;
-    border: 1px solid rgba(148,163,184,0.65);
-    background: radial-gradient(circle at top, #1f2937, #020617);
-    color: #e5e7eb;
-    font-size: 13px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0;
-    overflow: hidden;
-}
-
-/* Khi có ảnh: dùng background-image, ẩn chữ */
-.avatar-btn.has-image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: transparent;
-}
-
-/* Dropdown user */
-.user-dropdown {
-    position: absolute;
-    right: 0;
-    top: 52px;
-    min-width: 220px;
-    background: rgba(15,23,42,0.98);
-    border-radius: 16px;
-    padding: 10px 0;
-    border: 1px solid rgba(148,163,184,0.6);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.8);
-    display: none;
-    z-index: 1500;
-}
-
-.user-dropdown.open {
-    display: block;
-}
-
-.user-dropdown-inner {
-    padding: 8px 14px 10px;
-}
-
-.user-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    color: #9ca3af;
-}
-
-.user-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #f9fafb;
-    margin-top: 2px;
-}
-
-.user-code {
-    font-size: 12px;
-    color: #9ca3af;
-    margin-bottom: 6px;
-}
-
-.user-dropdown-link {
-    width: 100%;
-    text-align: left;
-    border: none;
-    background: transparent;
-    color: #e5e7eb;
-    font-size: 13px;
-    padding: 7px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.user-dropdown-link:hover {
-    background: rgba(37,99,235,0.25);
-}
-
-.user-auth-btn {
-    margin-top: 4px;
-    font-weight: 600;
-    color: #bfdbfe;
-}
-
-/* Mobile: thu nhỏ avatar một chút */
-@media (max-width: 768px) {
-    .avatar-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 12px;
+    .content,
+    .page-content {
+        padding: 20px 16px;
     }
 }
 /* ================================
@@ -848,4 +383,3 @@ footer {
     color: #fff;
     font-size: 16px;
 }
-
