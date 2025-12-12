@@ -809,3 +809,43 @@ footer {
         font-size: 12px;
     }
 }
+/* ================================
+   CUSTOM HERO FIX FOR TOAN 12 
+================================ */
+.course-hero {
+    background: #fbbf24;
+    padding: 40px;
+    border-radius: 20px;
+    color: #000;
+}
+
+.course-hero-inner {
+    display: flex;
+    gap: 40px;
+}
+
+.thumb-box {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.course-meta h1 {
+    font-size: 34px;
+    font-weight: 800;
+    color: #000;
+}
+
+.course-price {
+    font-size: 32px;
+    font-weight: 800;
+    color: #b91c1c;
+    margin: 18px 0;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #fff;
+    font-size: 16px;
+}
+
