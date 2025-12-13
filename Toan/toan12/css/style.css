@@ -1190,17 +1190,15 @@ footer {
    LESSON GRID
 ================================ */
 .lessons-grid {
-    display: none;
+    display: none;   /* mặc định ẩn */
     margin-top: 10px;
-    display: grid;
+
     grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
     gap: 10px;
 }
-
 .chapter.open .lessons-grid {
     display: grid;
 }
-
 .lesson-tile {
     background: rgba(15,23,42,0.95);
     border: 1px solid rgba(99,102,241,0.45);
@@ -1225,6 +1223,3 @@ footer {
         grid-template-columns:1fr;
     }
 }
-
-
-
