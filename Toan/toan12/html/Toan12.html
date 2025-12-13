@@ -198,16 +198,10 @@
 
                 <!-- BÀI -->
                 <div class="lessons-grid">
-                    <a href="lesson.html?id=xps-ch1-b1" 
-                        class="lesson-item"
-                        data-title="Bài 1: Tập xác định"
-                        data-desc="Khái niệm và ví dụ">
+                    <a href="lesson.html?id=xps-ch1-b1" class="lesson-item"
                         Bài 1: Tập xác định
                     </a>
-                    <a href="lesson.html?id=xps-ch1-b2" 
-                        class="lesson-item"
-                        data-title="Bài 2: Sự biến thiên"
-                        data-desc="Khái niệm và ví dụ">
+                    <a href="lesson.html?id=xps-ch1-b2" class="lesson-item"
                         Bài 2: Sự biến thiên
                     </a>
                 </div>
@@ -265,13 +259,12 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        TAB SWITCH
     ========================= */
-    const tabBtns = document.querySelectorAll(".tab-btn");
-    const panels = document.querySelectorAll(".tab-panel");
-
-    tabBtns.forEach(btn => {
+    document.querySelectorAll(".tab-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-            tabBtns.forEach(b => b.classList.remove("active"));
-            panels.forEach(p => p.classList.remove("active"));
+            document.querySelectorAll(".tab-btn")
+                .forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".tab-panel")
+                .forEach(p => p.classList.remove("active"));
 
             btn.classList.add("active");
             const target = document.getElementById(btn.dataset.tab);
@@ -280,124 +273,60 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* =========================
-       COURSE TOGGLE (MỞ / ĐÓNG KHÓA)
+       COURSE TOGGLE
     ========================= */
     document.querySelectorAll(".course-toggle").forEach(btn => {
         btn.addEventListener("click", () => {
-            const card = btn.closest(".course-card");
-            card?.classList.toggle("open");
+            btn.closest(".course-card")?.classList.toggle("open");
         });
     });
 
     /* =========================
        CHAPTER ACCORDION
-       - Mở 1 chương → đóng chương khác
-       - Animate mượt
+       (mở 1 chương → đóng chương khác)
     ========================= */
     const chapters = document.querySelectorAll(".chapter");
 
     document.querySelectorAll(".chapter-toggle").forEach(btn => {
         btn.addEventListener("click", () => {
-            const currentChapter = btn.closest(".chapter");
-            if (!currentChapter) return;
+            const current = btn.closest(".chapter");
 
-            const lessonBox = currentChapter.querySelector(".lessons-grid");
-
-            // đóng các chương khác
             chapters.forEach(ch => {
-                if (ch !== currentChapter) {
+                if (ch !== current) {
                     ch.classList.remove("open");
                     ch.style.setProperty("--h", "0px");
                 }
             });
 
-            // toggle chương hiện tại
-            if (currentChapter.classList.contains("open")) {
-                currentChapter.classList.remove("open");
-                currentChapter.style.setProperty("--h", "0px");
+            if (current.classList.contains("open")) {
+                current.classList.remove("open");
+                current.style.setProperty("--h", "0px");
             } else {
-                currentChapter.classList.add("open");
-                if (lessonBox) {
-                    currentChapter.style.setProperty(
-                        "--h",
-                        lessonBox.scrollHeight + "px"
-                    );
-                }
+                const box = current.querySelector(".lessons-grid");
+                current.classList.add("open");
+                current.style.setProperty("--h", box.scrollHeight + "px");
             }
         });
     });
 
     /* =========================
-       LESSON POPUP
+       LESSON PROGRESS (ĐÁNH DẤU ĐÃ HỌC)
     ========================= */
-    const popup = document.getElementById("lessonPopup");
-    const popupTitle = document.getElementById("popupTitle");
-    const popupDesc = document.getElementById("popupDesc");
-    const popupAction = document.querySelector(".popup-action");
-
-    let currentLessonId = null;
-
-    document.querySelectorAll(".lesson-item").forEach(item => {
-        item.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (!popup) return;
-
-            popupTitle.textContent = item.dataset.title || "";
-            popupDesc.textContent = item.dataset.desc || "";
-            currentLessonId = item.dataset.lessonId || null;
-
-            popup.classList.add("active");
-        });
-    });
-
-    popup?.querySelector(".popup-close")?.addEventListener("click", () => {
-        popup.classList.remove("active");
-    });
-
-    popup?.querySelector(".popup-overlay")?.addEventListener("click", () => {
-        popup.classList.remove("active");
-    });
-
-    /* =========================
-       LESSON PROGRESS
-    ========================= */
-    function applyProgress(progressList) {
+    function applyProgress(progress) {
         document.querySelectorAll(".lesson-item").forEach(item => {
-            const id = item.dataset.lessonId;
-            if (progressList.includes(id)) {
+            if (progress.includes(item.dataset.lessonId)) {
                 item.classList.add("completed");
             }
         });
     }
-
-    const savedProgress = JSON.parse(
+    const saved = JSON.parse(
         localStorage.getItem("toan12_progress")
     ) || [];
-
-    applyProgress(savedProgress);
-
-    popupAction?.addEventListener("click", () => {
-        if (!currentLessonId) return;
-
-        const progress = JSON.parse(
-            localStorage.getItem("toan12_progress")
-        ) || [];
-
-        if (!progress.includes(currentLessonId)) {
-            progress.push(currentLessonId);
-            localStorage.setItem(
-                "toan12_progress",
-                JSON.stringify(progress)
-            );
-        }
-
-        applyProgress(progress);
-        popup?.classList.remove("active");
-    });
-
+    applyProgress(saved);
 });
 </script>
 </body>
 </html>
+
 
 
