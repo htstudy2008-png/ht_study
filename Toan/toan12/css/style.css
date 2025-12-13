@@ -525,14 +525,23 @@ body.has-course-access .owned-badge {
 }
 
 .stat {
-    background: rgba(255,255,255,0.06);
+    background: rgba(15,23,42,0.85);
     border-radius: 16px;
     padding: 14px 8px;
     text-align: center;
     font-weight: 700;
-   border: 1px solid rgba(148,163,184,0.22);
+   border: 1px solid rgba(99,102,241,0.45);
+    color: #f8fafc;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 8px 18px rgba(2,6,23,0.8);
 }
-
+.stat strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+    color: #e0e7ff;
+}
 /* Price */
 .course-price {
     font-size: 32px;
@@ -771,6 +780,7 @@ footer {
         font-size: 12px;
     }
 }
+
 
 
 
