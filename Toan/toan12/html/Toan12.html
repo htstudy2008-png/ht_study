@@ -42,6 +42,7 @@
 
         <a href="../../../dang-nhap/html/login.html" id="auth-button-sidebar">Đăng nhập</a>
     </nav>
+<div id="sidebar-overlay"></div>
 
     <div class="logo-title">
         <img src="../../../hinh_anh/logo.png" alt="H&T STUDY Logo">
@@ -215,9 +216,21 @@
 <script>
 function toggleMenu() {
     const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebar-overlay");
+
     sidebar.classList.toggle("open");
+    overlay.classList.toggle("show");
 }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("sidebar-overlay");
+    if (overlay) {
+        overlay.addEventListener("click", toggleMenu);
+    }
+});
+</script>
+
 <script>
 const reveals = document.querySelectorAll(".reveal");
 
@@ -304,6 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
