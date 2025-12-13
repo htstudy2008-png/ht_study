@@ -1114,4 +1114,117 @@ footer {
         font-size: 13px;
     }
 }
+/* ===============================
+   COURSE GRID
+================================ */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+    gap: 20px;
+}
+
+/* khóa */
+.course-card {
+    background: rgba(15,23,42,0.9);
+    border-radius: 20px;
+    border: 1px solid rgba(148,163,184,0.3);
+    overflow: hidden;
+}
+
+/* nút khóa */
+.course-toggle {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(90deg,#6366f1,#2563eb);
+    color: #f8fafc;
+    border: none;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* khóa đóng */
+.course-card.locked {
+    opacity: 0.6;
+    pointer-events: none;
+}
+.course-locked {
+    padding: 24px;
+    text-align: center;
+    color: #fca5a5;
+    font-weight: 700;
+}
+
+/* ===============================
+   CHAPTER
+================================ */
+.chapters {
+    display: none;
+    padding: 14px;
+}
+
+.course-card.open .chapters {
+    display: block;
+}
+
+.chapter {
+    margin-bottom: 12px;
+}
+
+.chapter-toggle {
+    width: 100%;
+    background: rgba(30,41,59,0.9);
+    border: 1px solid rgba(148,163,184,0.25);
+    border-radius: 14px;
+    padding: 12px 14px;
+    color: #e5e7eb;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ===============================
+   LESSON GRID
+================================ */
+.lessons-grid {
+    display: none;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+    gap: 10px;
+}
+
+.chapter.open .lessons-grid {
+    display: grid;
+}
+
+.lesson-tile {
+    background: rgba(15,23,42,0.95);
+    border: 1px solid rgba(99,102,241,0.45);
+    border-radius: 14px;
+    padding: 14px 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #e5e7eb;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.lesson-tile:hover {
+    transform: translateY(-4px);
+    background: rgba(99,102,241,0.25);
+}
+
+/* mobile */
+@media (max-width:768px){
+    .courses-grid{
+        grid-template-columns:1fr;
+    }
+}
+
 
