@@ -190,7 +190,9 @@
     </button>
 
     <ul class="lesson-list">
-        <li class="lesson-item" data-title="Tập xác định"
+        <li class="lesson-item" 
+            data-lesson-id="xps-ch1-b1"
+            data-title="Tập xác định"
             data-desc="Hướng dẫn cách xác định tập xác định của hàm số thường gặp.">
             Bài 1: Tập xác định
         </li>
@@ -252,28 +254,11 @@
 <footer>
     <p>&copy; 2025 H&T STUDY</p>
 </footer>
-
 <script>
-/* =========================
-   SIDEBAR
-========================= */
-function toggleMenu() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("open");
-}
-
 /* =========================
    DOM READY
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
-
-    /* ===== PHÂN QUYỀN KHÓA HỌC ===== */
-    const hasAccess = document.body.classList.contains("has-course-access");
-    const courseContent = document.getElementById("course-content");
-
-    if (courseContent && hasAccess) {
-        courseContent.style.display = "block";
-    }
 
     /* ===== TAB SWITCH ===== */
     const tabBtns = document.querySelectorAll(".tab-btn");
@@ -302,6 +287,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById("lessonPopup");
     const popupTitle = document.getElementById("popupTitle");
     const popupDesc = document.getElementById("popupDesc");
+    const popupAction = document.querySelector(".popup-action");
+
+    let currentLessonId = null;
 
     document.querySelectorAll(".lesson-item").forEach(item => {
         item.addEventListener("click", () => {
@@ -309,6 +297,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             popupTitle.textContent = item.dataset.title || "";
             popupDesc.textContent = item.dataset.desc || "";
+            currentLessonId = item.dataset.lessonId || null;
+
             popup.classList.add("active");
         });
     });
@@ -323,11 +313,53 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    /* ======================================================
+       LESSON PROGRESS (LƯU + HIỂN THỊ)
+    ====================================================== */
+
+    function applyProgress(progressList) {
+        document.querySelectorAll(".lesson-item").forEach(item => {
+            const id = item.dataset.lessonId;
+            if (progressList.includes(id)) {
+                item.classList.add("completed");
+            }
+        });
+    }
+
+    // Load tiến độ đã lưu (local tạm)
+    const savedProgress = JSON.parse(
+        localStorage.getItem("toan12_progress")
+    ) || [];
+
+    applyProgress(savedProgress);
+
+    // Khi nhấn "Vào bài học"
+    popupAction?.addEventListener("click", () => {
+        if (!currentLessonId) return;
+
+        const progress = JSON.parse(
+            localStorage.getItem("toan12_progress")
+        ) || [];
+
+        if (!progress.includes(currentLessonId)) {
+            progress.push(currentLessonId);
+            localStorage.setItem(
+                "toan12_progress",
+                JSON.stringify(progress)
+            );
+        }
+
+        applyProgress(progress);
+
+        // đóng popup sau khi lưu
+        popup?.classList.remove("active");
+    });
+
 });
 </script>
-
 </body>
 </html>
+
 
 
 
