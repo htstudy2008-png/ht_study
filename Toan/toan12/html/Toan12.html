@@ -177,65 +177,63 @@
         </div>
 
         <!-- NỘI DUNG KHÓA HỌC -->
-        <div class="tab-panel" id="content">
+       <div class="courses-grid">
 
-            <!-- KHÓA: XPS -->
-            <div class="course-block unlocked">
-                <h3>XPS – Xây dựng nền tảng</h3>
+    <!-- KHÓA XPS -->
+    <div class="course-card unlocked">
+        <button class="course-toggle">
+            <span>XPS – Xây dựng nền tảng</span>
+            <i>▾</i>
+        </button>
 
-                <div class="chapter">
-    <button class="chapter-toggle">
-        <span>Chương 1: Hàm số</span>
-        <i class="arrow">▾</i>
-    </button>
+        <!-- CHƯƠNG -->
+        <div class="chapters">
 
-    <ul class="lesson-list">
-        <li class="lesson-item" 
-            data-lesson-id="xps-ch1-b1"
-            data-title="Tập xác định"
-            data-desc="Hướng dẫn cách xác định tập xác định của hàm số thường gặp.">
-            Bài 1: Tập xác định
-        </li>
+            <div class="chapter">
+                <button class="chapter-toggle">
+                    <span>Chương 1: Hàm số</span>
+                    <i>▾</i>
+                </button>
 
-        <li class="lesson-item" data-title="Sự biến thiên"
-            data-desc="Phân tích bảng biến thiên, chiều biến thiên và cực trị.">
-            Bài 2: Sự biến thiên
-        </li>
-    </ul>
-</div>
-<div class="chapter">
-    <button class="chapter-toggle">
-        <span>Chương 2: Hàm mũ – Logarit</span>
-        <i class="arrow">▾</i>
-    </button>
-
-    <ul class="lesson-list">
-        <li class="lesson-item" data-title="Tập xác định"
-            data-desc="Hướng dẫn cách xác định tập xác định của hàm số thường gặp.">
-            Bài 1: Công thức cơ bản
-        </li>
-
-        <li class="lesson-item" data-title="Sự biến thiên"
-            data-desc="Phân tích bảng biến thiên, chiều biến thiên và cực trị.">
-            Bài 2: Bài tập vận dụng
-        </li>
-    </ul>
-</div>
-            <!-- KHÓA: LUYỆN ĐỀ (KHÓA) -->
-            <div class="course-block locked">
-                <h3>Luyện đề tổng hợp</h3>
-                <p class="locked-text">🔒 Bạn chưa đăng ký khóa học này</p>
+                <!-- BÀI -->
+                <div class="lessons-grid">
+                    <a href="lesson.html?id=xps-ch1-b1" class="lesson-tile">
+                        Bài 1: Tập xác định
+                    </a>
+                    <a href="lesson.html?id=xps-ch1-b2" class="lesson-tile">
+                        Bài 2: Sự biến thiên
+                    </a>
+                </div>
             </div>
 
-            <!-- KHÓA: CẤP TỐC (KHÓA) -->
-            <div class="course-block locked">
-                <h3>Cấp tốc 30 ngày</h3>
-                <p class="locked-text">🔒 Bạn chưa đăng ký khóa học này</p>
+            <div class="chapter">
+                <button class="chapter-toggle">
+                    <span>Chương 2: Hàm mũ – Logarit</span>
+                    <i>▾</i>
+                </button>
+
+                <div class="lessons-grid">
+                    <a href="lesson.html?id=xps-ch2-b1" class="lesson-tile">
+                        Bài 1: Công thức
+                    </a>
+                    <a href="lesson.html?id=xps-ch2-b2" class="lesson-tile">
+                        Bài 2: Vận dụng
+                    </a>
+                </div>
             </div>
 
         </div>
-
     </div>
+
+    <!-- KHÓA BỊ KHÓA -->
+    <div class="course-card locked">
+        <div class="course-locked">
+            🔒 Luyện đề tổng hợp  
+            <small>Bạn chưa đăng ký khóa này</small>
+        </div>
+    </div>
+
+</div>
 </section>
 </main>
 <div class="lesson-popup" id="lessonPopup">
@@ -359,6 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
