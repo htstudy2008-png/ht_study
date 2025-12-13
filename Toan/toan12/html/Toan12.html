@@ -279,14 +279,30 @@ document.addEventListener("DOMContentLoaded", () => {
             if (target) target.classList.add("active");
         });
     });
+/* =========================
+   COURSE TOGGLE + RIPPLE
+========================= */
+document.querySelectorAll(".course-toggle").forEach(btn => {
 
-    /* =========================
-       COURSE TOGGLE
-    ========================= */
-    document.querySelectorAll(".course-toggle").forEach(btn => {
-        btn.addEventListener("click", () => {
-            btn.closest(".course-card")?.classList.toggle("open");
-        });
+    btn.addEventListener("click", e => {
+
+        /* toggle mở khóa */
+        btn.closest(".course-card")?.classList.toggle("open");
+
+        /* ripple effect */
+        const ripple = document.createElement("span");
+        ripple.classList.add("ripple");
+
+        const rect = btn.getBoundingClientRect();
+        ripple.style.left = (e.clientX - rect.left) + "px";
+        ripple.style.top  = (e.clientY - rect.top) + "px";
+
+        btn.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 600);
+    });
+
+});
     });
 
     /* =========================
@@ -335,6 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
