@@ -156,22 +156,26 @@
             <!-- KHÓA -->
             <div class="course-item">
                 <div class="course-header" onclick="toggleBlock(this)">
-                    <span>XPS – Nền tảng Toán 12</span>
-                </div>
+    <span>XPS – Nền tảng Toán 12</span>
+    <span class="arrow">▾</span>
+</div>
 
                 <!-- CHƯƠNG -->
                 <div class="course-body">
                     <div class="chapter-item">
-                        <div class="chapter-header" onclick="toggleBlock(this)">
-                            Chương 1: Ứng dụng đạo hàm
-                        </div>
+    <div class="chapter-header" onclick="toggleBlock(this)">
+        <span>Chương 1: Ứng dụng đạo hàm</span>
+        <span class="chapter-meta">
+            <span class="lesson-count">2 bài</span>
+            <span class="arrow">▾</span>
+        </span>
+    </div>
 
-                        <!-- BÀI -->
-                        <div class="lesson-list">
-                            <a href="bai1.html" class="lesson-item">Bài 1: Tính đơn điệu</a>
-                            <a href="bai2.html" class="lesson-item">Bài 2: Cực trị</a>
-                        </div>
-                    </div>
+    <div class="lesson-list">
+        <a href="bai1.html" class="lesson-item">Bài 1: Tính đơn điệu</a>
+        <a href="bai2.html" class="lesson-item">Bài 2: Cực trị</a>
+    </div>
+</div>
 
                     <div class="chapter-item">
                         <div class="chapter-header" onclick="toggleBlock(this)">
@@ -268,8 +272,27 @@ function toggleBlock(el) {
     next.style.display = next.style.display === "block" ? "none" : "block";
 }
 </script>
+    <script>
+function toggleBlock(header) {
+    const content = header.nextElementSibling;
+    if (!content) return;
+
+    const isOpen = content.classList.contains("show");
+
+    content.classList.toggle("show");
+    header.classList.toggle("open");
+
+    if (isOpen) {
+        content.style.maxHeight = null;
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+    }
+}
+</script>
+
 </body>
 </html>
+
 
 
 
