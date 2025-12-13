@@ -32,7 +32,7 @@
     </script>
 </head>
 <body>
-<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
 <header class="header">
     <div class="menu-icon">☰</div>
 
@@ -107,60 +107,9 @@
 <footer>
     <p>&copy; 2025 H&T STUDY</p>
 </footer>
-    <script>
-    function toggleMenu() {
-        const sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("open");
-    }
-
-    // Click ra ngoài sidebar để đóng
-    document.addEventListener("click", function (e) {
-        const sidebar = document.getElementById("sidebar");
-        const menuIcon = document.querySelector(".menu-icon");
-
-        if (
-            sidebar.classList.contains("open") &&
-            !sidebar.contains(e.target) &&
-            !menuIcon.contains(e.target)
-        ) {
-            sidebar.classList.remove("open");
-        }
-    });
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const sidebar = document.getElementById("sidebar");
-    const menuIcon = document.querySelector(".menu-icon");
-    const closeBtn = sidebar.querySelector(".closebtn");
-
-    if (!sidebar || !menuIcon || !closeBtn) {
-        console.error("Sidebar elements not found");
-        return;
-    }
-
-    // mở / đóng sidebar
-    menuIcon.addEventListener("click", function (e) {
-        e.stopPropagation();
-        sidebar.classList.toggle("open");
-    });
-
-    closeBtn.addEventListener("click", function (e) {
-        e.stopPropagation();
-        sidebar.classList.remove("open");
-    });
-
-    // click ra ngoài để đóng
-    document.addEventListener("click", function (e) {
-        if (sidebar.classList.contains("open") && !sidebar.contains(e.target)) {
-            sidebar.classList.remove("open");
-        }
-    });
-
-});
-</script>
 </body>
 </html>
+
 
 
 
