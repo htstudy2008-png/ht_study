@@ -1048,9 +1048,15 @@ footer {
 }
 
 .course-body {
-    display: none;
-    margin-top: 12px;
-    padding-left: 16px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.course-body.show {
+    max-height: 2000px; /* đủ lớn */
+    opacity: 1;
 }
 
 .chapter-header {
@@ -1165,4 +1171,5 @@ footer {
         font-size: 11px;
     }
 }
+
 
