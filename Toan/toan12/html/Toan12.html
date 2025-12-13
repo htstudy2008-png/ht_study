@@ -145,14 +145,77 @@
 
     </div>
 </section>
-    <!-- NỘI DUNG KHÓA HỌC (CHỈ HIỆN KHI ĐÃ MUA) -->
-    <div id="course-content" class="card" style="margin-top:40px; display:none;">
-        <h2>Nội dung bài giảng</h2>
-        <p>• Video bài giảng 1</p>
-        <p>• Video bài giảng 2</p>
-        <p>• Video bài giảng 3</p>
+<section class="course-tabs">
+
+    <!-- TAB HEADER -->
+    <div class="tabs-header">
+        <button class="tab-btn active" data-tab="overview">Tổng quan</button>
+        <button class="tab-btn" data-tab="content">Nội dung khóa học</button>
     </div>
 
+    <!-- TAB CONTENT -->
+    <div class="tabs-content">
+
+        <!-- TỔNG QUAN -->
+        <div class="tab-panel active" id="overview">
+            <div class="overview-text">
+                <h2>Giới thiệu khóa học Toán 12</h2>
+                <p>
+                    Khóa học <strong>Toán 12 – Luyện thi chuyên sâu</strong> được thiết kế
+                    dành cho học sinh lớp 12 đang hướng tới mục tiêu
+                    <strong>đạt điểm cao trong kỳ thi THPT Quốc Gia</strong>.
+                </p>
+                <p>
+                    Nội dung khóa học bao gồm đầy đủ các chuyên đề trọng tâm,
+                    hệ thống bài tập từ cơ bản đến nâng cao,
+                    kết hợp luyện đề sát cấu trúc đề thi thật.
+                </p>
+                <p>
+                    Phù hợp cho học sinh muốn <strong>nâng nền – bứt phá – về đích an toàn</strong>.
+                </p>
+            </div>
+        </div>
+
+        <!-- NỘI DUNG KHÓA HỌC -->
+        <div class="tab-panel" id="content">
+
+            <!-- KHÓA: XPS -->
+            <div class="course-block unlocked">
+                <h3>XPS – Xây dựng nền tảng</h3>
+
+                <div class="chapter">
+                    <h4>Chương 1: Hàm số</h4>
+                    <ul>
+                        <li>Bài 1: Tập xác định</li>
+                        <li>Bài 2: Sự biến thiên</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h4>Chương 2: Hàm mũ – Logarit</h4>
+                    <ul>
+                        <li>Bài 1: Công thức cơ bản</li>
+                        <li>Bài 2: Bài tập vận dụng</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- KHÓA: LUYỆN ĐỀ (KHÓA) -->
+            <div class="course-block locked">
+                <h3>Luyện đề tổng hợp</h3>
+                <p class="locked-text">🔒 Bạn chưa đăng ký khóa học này</p>
+            </div>
+
+            <!-- KHÓA: CẤP TỐC (KHÓA) -->
+            <div class="course-block locked">
+                <h3>Cấp tốc 30 ngày</h3>
+                <p class="locked-text">🔒 Bạn chưa đăng ký khóa học này</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 </main>
 
 <footer>
@@ -175,5 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
