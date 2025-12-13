@@ -150,7 +150,26 @@ const observer = new IntersectionObserver(
 
 reveals.forEach(el => observer.observe(el));
 </script>
+    <script>
+const banner = document.querySelector(".course-banner");
+
+window.addEventListener("scroll", () => {
+    if (!banner) return;
+
+    const rect = banner.getBoundingClientRect();
+    const offset = rect.top * 0.15;
+
+    banner.style.setProperty(
+        "--parallaxY",
+        `${offset}px`
+    );
+
+    banner.querySelector("::before");
+});
+</script>
+
 </body>
 </html>
+
 
 
