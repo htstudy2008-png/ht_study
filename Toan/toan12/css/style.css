@@ -1409,107 +1409,7 @@ footer {
 .user-dropdown.open {
     display: block;
 }
-/* ===== AVATAR + MENU NGƯỜI DÙNG ===== */
 
-.user-menu {
-    position: relative;
-    margin-left: 16px;
-}
-
-.avatar-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 999px;
-    border: 1px solid rgba(148,163,184,0.8);
-    background: radial-gradient(circle at top,
-                rgba(148,163,184,0.18), transparent 55%),
-                #020617;
-    color: #e5e7eb;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 0 0 1px rgba(15,23,42,1),
-                0 8px 18px rgba(15,23,42,0.9);
-}
-
-.avatar-btn:hover {
-    border-color: rgba(191,219,254,0.9);
-}
-
-/* Dropdown info */
-.user-dropdown {
-    position: absolute;
-    top: 48px;
-    right: 0;
-    width: 230px;
-    background: rgba(15,23,42,0.98);
-    border-radius: 16px;
-    border: 1px solid rgba(148,163,184,0.8);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.8);
-    padding: 6px 0;
-    display: none;
-    z-index: 2000;
-}
-
-.user-dropdown.open {
-    display: block;
-}
-
-.user-dropdown-inner {
-    padding: 8px 14px 10px;
-}
-
-.user-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: #9ca3af;
-    margin-bottom: 2px;
-}
-
-.user-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #e5e7eb;
-}
-
-.user-code {
-    font-size: 12px;
-    color: #9ca3af;
-    margin-bottom: 8px;
-}
-
-.user-dropdown hr {
-    border: none;
-    border-top: 1px solid rgba(55,65,81,0.9);
-    margin: 6px -6px 6px;
-}
-
-.user-dropdown-link {
-    display: block;
-    width: 100%;
-    text-align: left;
-    font-size: 13px;
-    color: #e5e7eb;
-    padding: 6px 6px;
-    border-radius: 8px;
-    text-decoration: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-}
-
-.user-dropdown-link:hover {
-    background: rgba(37,99,235,0.30);
-}
-
-.user-auth-btn {
-    margin-top: 4px;
-}
 /* ===============================
    PRICE BOX – FIX LAYOUT
 ================================ */
@@ -1564,6 +1464,7 @@ footer {
         width: 100%;
     }
 }
+
 
 
 
