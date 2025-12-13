@@ -1119,10 +1119,9 @@ footer {
 ================================ */
 .courses-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+    grid-template-columns: 1fr;
     gap: 20px;
 }
-
 /* khóa */
 .course-card {
     background: rgba(15,23,42,0.9);
@@ -1226,5 +1225,6 @@ footer {
         grid-template-columns:1fr;
     }
 }
+
 
 
