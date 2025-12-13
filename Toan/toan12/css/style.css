@@ -598,3 +598,67 @@ body.has-course-access .owned-badge {
         padding: 5px 14px;
     }
 }
+/* ===============================
+   COURSE HERO – FIX GIAO DIỆN
+================================ */
+.course-hero {
+    margin-top: 100px;
+    padding: 60px;
+    border-radius: 36px;
+
+    background:
+        radial-gradient(900px 450px at 0% 0%,
+            rgba(99,102,241,0.35), transparent 60%),
+        radial-gradient(700px 350px at 100% 10%,
+            rgba(56,189,248,0.25), transparent 55%),
+        linear-gradient(135deg, #020617, #020617);
+
+    box-shadow: 0 40px 100px rgba(2,6,23,0.95);
+}
+
+.course-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 1fr;
+    gap: 56px;
+    align-items: center;
+}
+
+/* META */
+.course-meta h1 {
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 22px;
+    background: linear-gradient(90deg,#e0e7ff,#7dd3fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* STATS */
+.course-stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 14px;
+    margin-bottom: 26px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .course-hero {
+        padding: 30px 24px;
+    }
+
+    .course-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .course-stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .price-box {
+        align-items: center;
+    }
+}
+
