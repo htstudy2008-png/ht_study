@@ -31,7 +31,8 @@
         });
     </script>
 </head>
-<body><div class="sidebar-overlay" id="sidebar-overlay"></div>
+<body>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
 <header class="header">
     <div class="menu-icon">☰</div>
 
@@ -139,13 +140,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    let startX = 0;
-    let currentX = 0;
-
     function openSidebar() {
         sidebar.classList.add("open");
         overlay.classList.add("show");
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "hidden"; // khóa scroll mobile
     }
 
     function closeSidebar() {
@@ -154,34 +152,19 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.style.overflow = "";
     }
 
-    // Mở sidebar
     menuIcon.addEventListener("click", function (e) {
         e.stopPropagation();
         openSidebar();
     });
 
-    // Đóng bằng nút ×
     closeBtn.addEventListener("click", function (e) {
         e.stopPropagation();
         closeSidebar();
     });
 
-    // Click overlay để đóng
     overlay.addEventListener("click", closeSidebar);
 
-    // Swipe để đóng (mobile)
-    sidebar.addEventListener("touchstart", function (e) {
-        startX = e.touches[0].clientX;
-    });
-
-    sidebar.addEventListener("touchmove", function (e) {
-        currentX = e.touches[0].clientX;
-        if (currentX - startX < -60) {
-            closeSidebar();
-        }
-    });
-
-    // Resize lên desktop thì reset
+    // resize về desktop thì reset
     window.addEventListener("resize", function () {
         if (window.innerWidth > 768) {
             closeSidebar();
@@ -193,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
