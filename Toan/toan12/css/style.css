@@ -1082,3 +1082,87 @@ footer {
 .lesson-item:hover {
     background: #0f172a;
 }
+/* ======================================================
+   ICON + ANIMATION MỞ KHÓA / CHƯƠNG
+====================================================== */
+
+.course-header,
+.chapter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Mũi tên */
+.arrow {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Khi mở */
+.open > .arrow,
+.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* ===== Animation mở nội dung ===== */
+.course-body,
+.lesson-list {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.course-body.show,
+.lesson-list.show {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+/* ===== Số bài ===== */
+.chapter-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-count {
+    font-size: 12px;
+    color: #38bdf8;
+    background: rgba(56,189,248,0.1);
+    padding: 3px 8px;
+    border-radius: 999px;
+}
+@media (max-width: 768px) {
+
+    .course-header,
+    .chapter-header {
+        padding: 18px;
+        font-size: 15px;
+    }
+
+    .lesson-item {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .tabs-header {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .tabs-header::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        white-space: nowrap;
+    }
+
+    .lesson-count {
+        font-size: 11px;
+    }
+}
+
