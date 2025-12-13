@@ -236,22 +236,17 @@ const observer = new IntersectionObserver(
 
 reveals.forEach(el => observer.observe(el));
 </script>
-    <script>
+<script>
 const banner = document.querySelector(".course-banner");
 
-window.addEventListener("scroll", () => {
-    if (!banner) return;
+if (banner) {
+    window.addEventListener("scroll", () => {
+        const rect = banner.getBoundingClientRect();
+        const offset = rect.top * 0.15;
 
-    const rect = banner.getBoundingClientRect();
-    const offset = rect.top * 0.15;
-
-    banner.style.setProperty(
-        "--parallaxY",
-        `${offset}px`
-    );
-
-    banner.querySelector("::before");
-});
+        banner.style.setProperty("--parallaxY", `${offset}px`);
+    });
+}
 </script>
 
 <script>
@@ -309,6 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
