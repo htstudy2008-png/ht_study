@@ -511,6 +511,12 @@ body.has-course-access .owned-badge {
     color: #e0e7ff;
 }
 /* Price */
+.course-price {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fca5a5;
+    margin: 18px 0;
+}
 
 /* Button */
 .btn-primary {
@@ -555,7 +561,10 @@ body.has-course-access .owned-badge {
    PHÂN QUYỀN
 ====================================================== */
 /* MẶC ĐỊNH (chưa login) */
-.course-price { display: none; }
+.course-price {
+    display: block;
+}
+
 #btn-view-course {
     display: none;
 }
@@ -629,6 +638,11 @@ footer {
     .course-stats {
         grid-template-columns: repeat(2,1fr);
     }
+    .course-price {
+        order: 4;
+        font-size: 26px;
+        text-align: center;
+    }
     .btn-primary {
         width: 100%;
         order: 5;
@@ -680,8 +694,6 @@ footer {
     background-position: center;
     background-repeat: no-repeat;
     color: transparent;
-}
-
 .user-dropdown-inner {
     padding: 8px 14px 10px;
 }
@@ -781,6 +793,13 @@ footer {
     animation: fadeUp 0.4s ease;
 }
 
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
 .tab-panel {
     display: none;
     animation: fadeUp 0.35s ease;
@@ -900,6 +919,13 @@ footer {
         max-height: 500px;
         margin-top: 8px;
     }
+
+    .lesson-item {
+        padding: 10px 8px;
+        border-radius: 10px;
+        margin-bottom: 6px;
+        background: rgba(15,23,42,0.8);
+    }
 }
 /* ======================================================
    LESSON POPUP
@@ -995,6 +1021,25 @@ footer {
 }
 
 /* mỗi bài học */
+.lesson-item {
+    position: relative;
+    background: radial-gradient(circle at top,
+                rgba(99,102,241,0.18),
+                rgba(15,23,42,0.95));
+    border: 1px solid rgba(148,163,184,0.35);
+    border-radius: 16px;
+
+    padding: 14px 12px;
+    min-height: 90px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #e5e7eb;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 10px 24px rgba(2,6,23,0.8);
+}
 
 /* hover */
 .lesson-item:hover {
@@ -1074,8 +1119,6 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-       position: relative;
-    overflow: hidden;
 }
 
 /* khóa đóng */
@@ -1103,6 +1146,10 @@ footer {
 }
 
 /* hiệu ứng gợn sóng header */
+.course-toggle {
+    position: relative;
+    overflow: hidden;
+}
 
 .course-toggle::after {
     content: "";
@@ -1286,6 +1333,32 @@ footer {
 /* ===============================
    PRICE BOX – NỔI BẬT
 ================================ */
+.course-price {
+    display: inline-block;
+    margin-top: 18px;
+
+    padding: 16px 28px;
+    border-radius: 20px;
+
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+
+    color: #fecaca;
+    background: radial-gradient(
+        circle at top,
+        rgba(239,68,68,0.35),
+        rgba(127,29,29,0.65)
+    );
+
+    border: 1px solid rgba(248,113,113,0.8);
+
+    box-shadow:
+        0 20px 40px rgba(239,68,68,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+
+    animation: pricePulse 2.4s ease-in-out infinite;
+}
 
 /* nhịp nhẹ */
 @keyframes pricePulse {
@@ -1295,6 +1368,23 @@ footer {
     50% {
         transform: scale(1.05);
     }
+}
+.price-box {
+    margin-top: 26px;
+    padding: 24px;
+    border-radius: 24px;
+
+    background: rgba(15,23,42,0.75);
+    border: 1px solid rgba(239,68,68,0.45);
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+
+    box-shadow:
+        0 30px 80px rgba(239,68,68,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.08);
 }
 /* =========================
    USER DROPDOWN – FIX CUỐI
@@ -1351,6 +1441,24 @@ footer {
 }
 
 /* Dropdown info */
+.user-dropdown {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    width: 230px;
+    background: rgba(15,23,42,0.98);
+    border-radius: 16px;
+    border: 1px solid rgba(148,163,184,0.8);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.8);
+    padding: 6px 0;
+    display: none;
+    z-index: 2000;
+}
+
+.user-dropdown.open {
+    display: block;
+}
+
 .user-dropdown-inner {
     padding: 8px 14px 10px;
 }
@@ -1405,7 +1513,29 @@ footer {
 /* ===============================
    PRICE BOX – FIX LAYOUT
 ================================ */
-.price-box { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 20px; padding: 20px 26px; border-radius: 24px; background: radial-gradient( circle at top left, rgba(239,68,68,0.18), rgba(15,23,42,0.95) ); border: 1px solid rgba(248,113,113,0.6); box-shadow: 0 24px 60px rgba(239,68,68,0.35), inset 0 1px 0 rgba(255,255,255,0.12); }
+.price-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+
+    margin-top: 20px;
+    padding: 20px 26px;
+
+    border-radius: 24px;
+
+    background: radial-gradient(
+        circle at top left,
+        rgba(239,68,68,0.18),
+        rgba(15,23,42,0.95)
+    );
+
+    border: 1px solid rgba(248,113,113,0.6);
+
+    box-shadow:
+        0 24px 60px rgba(239,68,68,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+}
 .course-price {
     margin: 0;
     padding: 14px 24px;
@@ -1434,7 +1564,6 @@ footer {
         width: 100%;
     }
 }
-
 
 
 
