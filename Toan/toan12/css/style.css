@@ -190,7 +190,7 @@ body {
     position: relative;
 }
 
-.avatar-btn {
+.avatar-btn--header {
 width: 36px;
     height: 36px;
     border-radius: 999px;
@@ -595,11 +595,32 @@ body.has-course-access .owned-badge {
 /* ======================================================
    PHÂN QUYỀN
 ====================================================== */
-.course-price,
+/* MẶC ĐỊNH (chưa login) */
+.course-price {
+    display: block;
+}
+
 #btn-view-course {
     display: none;
 }
 
+/* ĐÃ ĐĂNG NHẬP NHƯNG CHƯA MUA */
+body.logged-in.no-course-access .course-price {
+    display: block;
+}
+
+body.logged-in.no-course-access #btn-view-course {
+    display: none;
+}
+
+/* ĐÃ MUA KHÓA */
+body.logged-in.has-course-access .course-price {
+    display: none;
+}
+
+body.logged-in.has-course-access #btn-view-course {
+    display: inline-block;
+}
 body.logged-in.no-course-access .course-price {
     display: block;
 }
@@ -1152,7 +1173,7 @@ footer {
 /* khóa đóng */
 .course-card.locked {
     opacity: 0.6;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 .course-locked {
     padding: 24px;
@@ -1266,5 +1287,3 @@ footer {
 .chapter.open .chapter-toggle .arrow {
     transform: rotate(180deg);
 }
-
-
