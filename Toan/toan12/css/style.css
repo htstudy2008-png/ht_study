@@ -661,4 +661,80 @@ body.has-course-access .owned-badge {
         align-items: center;
     }
 }
+/* ===============================
+   COURSE THUMB – EMPIRE STYLE
+================================ */
+.thumb-box {
+    position: relative;
+    padding: 0;                 /* ❌ bỏ padding */
+    border-radius: 28px;
+    overflow: hidden;
+
+    background: none;           /* ❌ bỏ nền glass */
+    backdrop-filter: none;
+    border: none;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.45);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.thumb-box:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.6);
+}
+
+/* Ảnh thumb */
+.thumb-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 28px;
+    object-fit: cover;
+}
+
+/* TAG (TOÁN 12) – NỔI TRÊN ẢNH */
+.thumb-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    background: linear-gradient(90deg,#22c55e,#16a34a);
+    color: #ffffff;
+
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 800;
+    border-radius: 999px;
+
+    letter-spacing: 0.04em;
+    box-shadow: 0 6px 18px rgba(34,197,94,0.45);
+}
+
+/* BADGE ĐÃ MUA */
+.owned-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    background: linear-gradient(90deg,#facc15,#eab308);
+    color: #1f2937;
+
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 900;
+    border-radius: 999px;
+
+    box-shadow: 0 6px 18px rgba(250,204,21,0.45);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .thumb-box img {
+        border-radius: 22px;
+    }
+}
+
 
