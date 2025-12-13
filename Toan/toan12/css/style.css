@@ -980,5 +980,105 @@ footer {
     .reveal.show .reveal-item:nth-child(3) { transition-delay: 0.3s; }
     .reveal.show .reveal-item:nth-child(4) { transition-delay: 0.4s; }
 }
+/* ======================================================
+   COURSE TABS
+====================================================== */
+.course-tabs {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
 
+.tabs-header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
 
+.tab-btn {
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid #334155;
+    background: #020617;
+    color: #94a3b8;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tab-btn.active {
+    background: #38bdf8;
+    color: #020617;
+    border-color: transparent;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===== Tổng quan ===== */
+#overview h2 {
+    margin-bottom: 12px;
+}
+
+.overview-list {
+    margin-top: 16px;
+    padding-left: 20px;
+}
+
+.overview-list li {
+    margin-bottom: 10px;
+}
+
+/* ===== Nội dung khóa học ===== */
+.course-item {
+    margin-bottom: 14px;
+}
+
+.course-header {
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.course-body {
+    display: none;
+    margin-top: 12px;
+    padding-left: 16px;
+}
+
+.chapter-header {
+    padding: 12px;
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.lesson-list {
+    display: none;
+    padding-left: 16px;
+    margin-bottom: 12px;
+}
+
+.lesson-item {
+    display: block;
+    padding: 10px;
+    margin-bottom: 6px;
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+}
+
+.lesson-item:hover {
+    background: #0f172a;
+}
