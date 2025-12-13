@@ -160,6 +160,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const avatarBtn = document.getElementById("avatar-btn");
+    const dropdown = document.getElementById("user-dropdown");
+
+    if (!avatarBtn || !dropdown) return;
+
+    // Click avatar -> toggle menu
+    avatarBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle("open");
+    });
+
+    // Click ra ngoài -> đóng menu
+    document.addEventListener("click", () => {
+        dropdown.classList.remove("open");
+    });
+
+    // Click trong menu -> không đóng
+    dropdown.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+});
+</script>
 
 </body>
 </html>
+
