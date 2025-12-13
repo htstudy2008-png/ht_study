@@ -136,12 +136,13 @@
                 <div class="stat">Full PDF</div>
             </div>
 
-            <div class="course-price">1.200.000đ</div>
+            <div class="price-box">
+    <div class="course-price">1.200.000đ</div>
+    <button id="btn-view-course" class="btn-primary">
+        VÀO HỌC NGAY
+    </button>
+</div>
 
-            <button id="btn-view-course" class="btn-primary">
-                VÀO HỌC NGAY
-            </button>
-        </div>
 
     </div>
 </section>
@@ -289,16 +290,19 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        TAB SWITCH
     ========================= */
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-            document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
 
-            btn.classList.add("active");
-            const target = document.getElementById(btn.dataset.tab);
-            if (target) target.classList.add("active");
-        });
+        btn.classList.add("active");
+        const target = document.getElementById(btn.dataset.tab);
+        if (target) {
+            target.classList.add("active");
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
     });
+});
 
     /* =========================
        COURSE TOGGLE + RIPPLE
@@ -369,6 +373,7 @@ current.style.setProperty("--h", box.scrollHeight + "px");
 
 </body>
 </html>
+
 
 
 
