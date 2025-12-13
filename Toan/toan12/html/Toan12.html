@@ -107,8 +107,29 @@
 <footer>
     <p>&copy; 2025 H&T STUDY</p>
 </footer>
+    <script>
+    function toggleMenu() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("open");
+    }
+
+    // Click ra ngoài sidebar để đóng
+    document.addEventListener("click", function (e) {
+        const sidebar = document.getElementById("sidebar");
+        const menuIcon = document.querySelector(".menu-icon");
+
+        if (
+            sidebar.classList.contains("open") &&
+            !sidebar.contains(e.target) &&
+            !menuIcon.contains(e.target)
+        ) {
+            sidebar.classList.remove("open");
+        }
+    });
+</script>
 </body>
 </html>
+
 
 
 
