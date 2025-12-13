@@ -256,58 +256,72 @@
     <p>&copy; 2025 H&T STUDY</p>
 </footer>
 <script>
+/* =========================
+   SIDEBAR
+========================= */
 function toggleMenu() {
     document.getElementById("sidebar")?.classList.toggle("open");
 }
-    document.getElementById("avatar-btn")?.addEventListener("click", () => {
-    document.getElementById("user-dropdown")?.classList.toggle("open");
-});
+
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* =========================
+       AVATAR DROPDOWN
+    ========================= */
+    const avatarBtn = document.getElementById("avatar-btn");
+    const userDropdown = document.getElementById("user-dropdown");
+
+    if (avatarBtn && userDropdown) {
+        avatarBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            userDropdown.classList.toggle("open");
+        });
+
+        document.addEventListener("click", () => {
+            userDropdown.classList.remove("open");
+        });
+
+        userDropdown.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+    }
 
     /* =========================
        TAB SWITCH
     ========================= */
     document.querySelectorAll(".tab-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-            document.querySelectorAll(".tab-btn")
-                .forEach(b => b.classList.remove("active"));
-            document.querySelectorAll(".tab-panel")
-                .forEach(p => p.classList.remove("active"));
+            document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
 
             btn.classList.add("active");
             const target = document.getElementById(btn.dataset.tab);
             if (target) target.classList.add("active");
         });
     });
-/* =========================
-   COURSE TOGGLE + RIPPLE
-========================= */
-document.querySelectorAll(".course-toggle").forEach(btn => {
 
-    btn.addEventListener("click", e => {
+    /* =========================
+       COURSE TOGGLE + RIPPLE
+    ========================= */
+    document.querySelectorAll(".course-toggle").forEach(btn => {
+        btn.addEventListener("click", e => {
 
-        /* toggle mở khóa */
-        btn.closest(".course-card")?.classList.toggle("open");
+            btn.closest(".course-card")?.classList.toggle("open");
 
-        /* ripple effect */
-        const ripple = document.createElement("span");
-        ripple.classList.add("ripple");
+            const ripple = document.createElement("span");
+            ripple.classList.add("ripple");
 
-        const rect = btn.getBoundingClientRect();
-        ripple.style.left = (e.clientX - rect.left) + "px";
-        ripple.style.top  = (e.clientY - rect.top) + "px";
+            const rect = btn.getBoundingClientRect();
+            ripple.style.left = (e.clientX - rect.left) + "px";
+            ripple.style.top  = (e.clientY - rect.top) + "px";
 
-        btn.appendChild(ripple);
-
-        setTimeout(() => ripple.remove(), 600);
-    });
-
-});
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
     });
 
     /* =========================
        CHAPTER ACCORDION
-       (mở 1 chương → đóng chương khác)
     ========================= */
     const chapters = document.querySelectorAll(".chapter");
 
@@ -334,7 +348,7 @@ document.querySelectorAll(".course-toggle").forEach(btn => {
     });
 
     /* =========================
-       LESSON PROGRESS (ĐÁNH DẤU ĐÃ HỌC)
+       LESSON PROGRESS
     ========================= */
     function applyProgress(progress) {
         document.querySelectorAll(".lesson-item").forEach(item => {
@@ -343,37 +357,16 @@ document.querySelectorAll(".course-toggle").forEach(btn => {
             }
         });
     }
-    const saved = JSON.parse(
-        localStorage.getItem("toan12_progress")
-    ) || [];
+
+    const saved = JSON.parse(localStorage.getItem("toan12_progress")) || [];
     applyProgress(saved);
+
 });
-    /* =========================
-   AVATAR DROPDOWN
-========================= */
-const avatarBtn = document.getElementById("avatar-btn");
-const userDropdown = document.getElementById("user-dropdown");
-
-if (avatarBtn && userDropdown) {
-
-    avatarBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); // không cho click lan ra ngoài
-        userDropdown.classList.toggle("open");
-    });
-
-    // click ra ngoài thì đóng
-    document.addEventListener("click", () => {
-        userDropdown.classList.remove("open");
-    });
-
-    // click bên trong dropdown không bị đóng
-    userDropdown.addEventListener("click", (e) => {
-        e.stopPropagation();
-    });
-}
 </script>
+
 </body>
 </html>
+
 
 
 
