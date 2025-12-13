@@ -341,8 +341,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 current.style.setProperty("--h", "0px");
             } else {
                 const box = current.querySelector(".lessons-grid");
-                current.classList.add("open");
-                current.style.setProperty("--h", box.scrollHeight + "px");
+if (!box) return;
+
+current.classList.add("open");
+current.style.setProperty("--h", box.scrollHeight + "px");
+
             }
         });
     });
@@ -366,6 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
