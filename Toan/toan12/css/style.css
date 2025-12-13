@@ -249,7 +249,7 @@ body {
     border-right: 1px solid rgba(148,163,184,0.6);
 }
 
-.sidebar.active {
+.sidebar.open {
     transform: translateX(0);
 }
 
@@ -429,4 +429,5 @@ footer {
         padding: 26px;
     }
 }
+
 
