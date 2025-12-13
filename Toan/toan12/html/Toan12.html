@@ -34,10 +34,10 @@
 <body>
 
 <header class="header">
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-icon">☰</div>
 
     <nav id="sidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
         <a href="../../../trang_chu/html/index.html">Trang chủ</a>
 
         <div class="sidebar-section">
@@ -127,8 +127,42 @@
         }
     });
 </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sidebar = document.getElementById("sidebar");
+    const menuIcon = document.querySelector(".menu-icon");
+    const closeBtn = sidebar.querySelector(".closebtn");
+
+    if (!sidebar || !menuIcon || !closeBtn) {
+        console.error("Sidebar elements not found");
+        return;
+    }
+
+    // mở / đóng sidebar
+    menuIcon.addEventListener("click", function (e) {
+        e.stopPropagation();
+        sidebar.classList.toggle("open");
+    });
+
+    closeBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        sidebar.classList.remove("open");
+    });
+
+    // click ra ngoài để đóng
+    document.addEventListener("click", function (e) {
+        if (sidebar.classList.contains("open") && !sidebar.contains(e.target)) {
+            sidebar.classList.remove("open");
+        }
+    });
+
+});
+</script>
+
 </body>
 </html>
+
 
 
 
