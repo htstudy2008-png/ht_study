@@ -159,14 +159,14 @@ body {
 }
 
 /* ======================================================
-   AVATAR + DROPDOWN
+   AVATAR + DROPDOWN (FIX CHUẨN ID)
 ====================================================== */
 .user-menu {
     margin-left: 16px;
     position: relative;
 }
 
-.avatar-btn {
+#avatar-btn {
     width: 40px;
     height: 40px;
     border-radius: 999px;
@@ -177,7 +177,7 @@ body {
     cursor: pointer;
 }
 
-.user-dropdown {
+#user-dropdown {
     position: absolute;
     right: 0;
     top: 52px;
@@ -188,9 +188,10 @@ body {
     box-shadow: 0 18px 40px rgba(0,0,0,0.8);
     display: none;
     animation: fadeScale 0.25s ease;
+    z-index: 2000;
 }
 
-.user-dropdown.open {
+#user-dropdown.open {
     display: block;
 }
 
@@ -232,24 +233,24 @@ body {
 }
 
 /* ======================================================
-   SIDEBAR
+   SIDEBAR (FIX THEO JS CŨ)
 ====================================================== */
 .sidebar {
-    height: 100%;
-    width: 0;
     position: fixed;
     top: 0;
     left: 0;
+    width: 260px;
+    height: 100%;
     background: #020617;
-    overflow-x: hidden;
-    transition: width 0.3s ease;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
     padding-top: 80px;
     z-index: 1500;
     border-right: 1px solid rgba(148,163,184,0.6);
 }
 
-.sidebar.open {
-    width: 260px;
+.sidebar.active {
+    transform: translateX(0);
 }
 
 .sidebar a {
@@ -428,3 +429,4 @@ footer {
         padding: 26px;
     }
 }
+
