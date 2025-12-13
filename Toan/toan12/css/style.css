@@ -856,6 +856,14 @@ footer {
 .tab-panel.active {
     display: block;
 }
+.tab-panel {
+    display: none;
+    animation: fadeUp 0.35s ease;
+}
+
+.tab-panel.active {
+    display: block;
+}
 
 /* ======================================================
    OVERVIEW
@@ -1417,5 +1425,6 @@ footer {
         transform: scale(1.05);
     }
 }
+
 
 
