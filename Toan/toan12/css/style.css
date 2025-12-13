@@ -928,6 +928,7 @@ footer {
 
 /* Lớp nền parallax */
 .course-banner::before {
+    pointer-events: none;
     content: "";
     position: absolute;
     inset: 0;
@@ -1170,6 +1171,7 @@ footer {
         font-size: 11px;
     }
 }
+
 
 
 
