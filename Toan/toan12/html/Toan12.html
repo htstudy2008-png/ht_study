@@ -352,11 +352,27 @@ document.addEventListener("DOMContentLoaded", () => {
         // đóng popup sau khi lưu
         popup?.classList.remove("active");
     });
+/* ===== COURSE TOGGLE ===== */
+document.querySelectorAll(".course-toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const card = btn.closest(".course-card");
+        card.classList.toggle("open");
+    });
+});
+
+/* ===== CHAPTER TOGGLE ===== */
+document.querySelectorAll(".chapter-toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const chapter = btn.closest(".chapter");
+        chapter.classList.toggle("open");
+    });
+});
 
 });
 </script>
 </body>
 </html>
+
 
 
 
