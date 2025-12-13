@@ -467,6 +467,7 @@ width: 36px;
     text-align: center;
     box-shadow: 0 12px 30px rgba(0,0,0,0.2);
     animation: fadeScale 0.6s ease;
+   z-index: 2;
 }
 .thumb-box:hover {
     transform: translateY(-6px) scale(1.02);
@@ -486,6 +487,8 @@ width: 36px;
     border-radius: 999px;
     font-weight: 700;
     letter-spacing: 0.06em;
+    position: relative;
+    z-index: 3;
 }
 /* badge đã mua */
 .owned-badge {
@@ -780,6 +783,7 @@ footer {
         font-size: 12px;
     }
 }
+
 
 
 
