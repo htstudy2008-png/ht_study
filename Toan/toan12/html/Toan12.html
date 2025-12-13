@@ -19,10 +19,10 @@
 <body>
 
 <header class="header">
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-icon">☰</div>
 
     <nav id="sidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
 
         <a href="../../../trang_chu/html/index.html">Trang chủ</a>
 
@@ -252,23 +252,7 @@ window.addEventListener("scroll", () => {
     banner.querySelector("::before");
 });
 </script>
-    <script>
-function toggleBlock(header) {
-    const content = header.nextElementSibling;
-    if (!content) return;
 
-    const isOpen = content.classList.contains("show");
-
-    content.classList.toggle("show");
-    header.classList.toggle("open");
-
-    if (isOpen) {
-        content.style.maxHeight = null;
-    } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-    }
-}
-</script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const tabBtns = document.querySelectorAll(".tab-btn");
@@ -294,7 +278,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ===== MỞ / ĐÓNG KHÓA ===== */
+    document.querySelectorAll(".course-header").forEach(header => {
+        header.addEventListener("click", () => {
+            const body = header.nextElementSibling;
+            if (!body) return;
+
+            header.classList.toggle("open");
+            body.classList.toggle("show");
+        });
+    });
+
+    /* ===== MỞ / ĐÓNG CHƯƠNG ===== */
+    document.querySelectorAll(".chapter-header").forEach(header => {
+        header.addEventListener("click", () => {
+            const lessons = header.nextElementSibling;
+            if (!lessons) return;
+
+            header.classList.toggle("open");
+            lessons.classList.toggle("show");
+        });
+    });
+
+});
+</script>
 
 </body>
 </html>
+
 
