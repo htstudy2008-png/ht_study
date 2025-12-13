@@ -263,13 +263,6 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
         document.getElementById(btn.dataset.tab).classList.add("active");
     });
 });
-
-/* Toggle block */
-function toggleBlock(el) {
-    const next = el.nextElementSibling;
-    if (!next) return;
-
-    next.style.display = next.style.display === "block" ? "none" : "block";
 }
 </script>
     <script>
@@ -292,9 +285,3 @@ function toggleBlock(header) {
 
 </body>
 </html>
-
-
-
-
-
-
