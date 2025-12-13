@@ -184,22 +184,41 @@
                 <h3>XPS – Xây dựng nền tảng</h3>
 
                 <div class="chapter">
-                    <h4>Chương 1: Hàm số</h4>
-                    <ul>
-                        <li>Bài 1: Tập xác định</li>
-                        <li>Bài 2: Sự biến thiên</li>
-                    </ul>
-                </div>
+    <button class="chapter-toggle">
+        <span>Chương 1: Hàm số</span>
+        <i class="arrow">▾</i>
+    </button>
 
-                <div class="chapter">
-                    <h4>Chương 2: Hàm mũ – Logarit</h4>
-                    <ul>
-                        <li>Bài 1: Công thức cơ bản</li>
-                        <li>Bài 2: Bài tập vận dụng</li>
-                    </ul>
-                </div>
-            </div>
+    <ul class="lesson-list">
+        <li class="lesson-item" data-title="Tập xác định"
+            data-desc="Hướng dẫn cách xác định tập xác định của hàm số thường gặp.">
+            Bài 1: Tập xác định
+        </li>
 
+        <li class="lesson-item" data-title="Sự biến thiên"
+            data-desc="Phân tích bảng biến thiên, chiều biến thiên và cực trị.">
+            Bài 2: Sự biến thiên
+        </li>
+    </ul>
+</div>
+<div class="chapter">
+    <button class="chapter-toggle">
+        <span>Chương 2: Hàm mũ – Logarit</span>
+        <i class="arrow">▾</i>
+    </button>
+
+    <ul class="lesson-list">
+        <li class="lesson-item" data-title="Tập xác định"
+            data-desc="Hướng dẫn cách xác định tập xác định của hàm số thường gặp.">
+            Bài 1: Công thức cơ bản
+        </li>
+
+        <li class="lesson-item" data-title="Sự biến thiên"
+            data-desc="Phân tích bảng biến thiên, chiều biến thiên và cực trị.">
+            Bài 2: Bài tập vận dụng
+        </li>
+    </ul>
+</div>
             <!-- KHÓA: LUYỆN ĐỀ (KHÓA) -->
             <div class="course-block locked">
                 <h3>Luyện đề tổng hợp</h3>
@@ -223,21 +242,81 @@
 </footer>
 
 <script>
+/* =========================
+   SIDEBAR
+========================= */
 function toggleMenu() {
     const sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle("open");
 }
 
-// Ẩn/hiện nội dung theo quyền access
+/* =========================
+   DOM READY
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* ===== PHÂN QUYỀN KHÓA HỌC ===== */
     const hasAccess = document.body.classList.contains("has-course-access");
-    if (hasAccess) {
-        document.getElementById("course-content").style.display = "block";
+    const courseContent = document.getElementById("course-content");
+
+    if (courseContent && hasAccess) {
+        courseContent.style.display = "block";
     }
+
+    /* ===== TAB SWITCH ===== */
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".tab-panel");
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            tabBtns.forEach(b => b.classList.remove("active"));
+            panels.forEach(p => p.classList.remove("active"));
+
+            btn.classList.add("active");
+            const target = document.getElementById(btn.dataset.tab);
+            if (target) target.classList.add("active");
+        });
+    });
+
+    /* ===== MOBILE ACCORDION ===== */
+    document.querySelectorAll(".chapter-toggle").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const chapter = btn.closest(".chapter");
+            if (chapter) chapter.classList.toggle("open");
+        });
+    });
+
+    /* ===== LESSON POPUP ===== */
+    const popup = document.getElementById("lessonPopup");
+    const popupTitle = document.getElementById("popupTitle");
+    const popupDesc = document.getElementById("popupDesc");
+
+    document.querySelectorAll(".lesson-item").forEach(item => {
+        item.addEventListener("click", () => {
+            if (!popup) return;
+
+            popupTitle.textContent = item.dataset.title || "";
+            popupDesc.textContent = item.dataset.desc || "";
+            popup.classList.add("active");
+        });
+    });
+
+    if (popup) {
+        popup.querySelector(".popup-close")?.addEventListener("click", () => {
+            popup.classList.remove("active");
+        });
+
+        popup.querySelector(".popup-overlay")?.addEventListener("click", () => {
+            popup.classList.remove("active");
+        });
+    }
+
 });
 </script>
+
 </body>
 </html>
+
 
 
 
