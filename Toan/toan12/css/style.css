@@ -1105,14 +1105,18 @@ footer {
    MOBILE TỐI ƯU
 ====================================================== */
 @media (max-width: 768px) {
-    .lesson-list {
-        grid-template-columns: repeat(2, 1fr);
+
+    .lessons-grid {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+        padding-left: 10px;
     }
 
-    .lesson-item {
-        min-height: 80px;
-        font-size: 13px;
+    .chapter.open .lessons-grid {
+        margin-top: 8px;
     }
+
 }
 /* ===============================
    COURSE GRID
@@ -1262,4 +1266,5 @@ footer {
 .chapter.open .chapter-toggle .arrow {
     transform: rotate(180deg);
 }
+
 
