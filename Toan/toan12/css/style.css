@@ -319,3 +319,32 @@ color: #64748b;
 .sidebar.open { width: 80%; }
 .content { padding: 24px 16px; }
 }
+/* ===== SIDEBAR MOBILE FIX ===== */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        height: 100vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .sidebar.open {
+        width: 80%;
+    }
+}
+/* ===== OVERLAY ===== */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+    z-index: 1400;
+}
+
+.sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
