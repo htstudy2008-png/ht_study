@@ -348,9 +348,33 @@ document.querySelectorAll(".course-toggle").forEach(btn => {
     ) || [];
     applyProgress(saved);
 });
+    /* =========================
+   AVATAR DROPDOWN
+========================= */
+const avatarBtn = document.getElementById("avatar-btn");
+const userDropdown = document.getElementById("user-dropdown");
+
+if (avatarBtn && userDropdown) {
+
+    avatarBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // không cho click lan ra ngoài
+        userDropdown.classList.toggle("open");
+    });
+
+    // click ra ngoài thì đóng
+    document.addEventListener("click", () => {
+        userDropdown.classList.remove("open");
+    });
+
+    // click bên trong dropdown không bị đóng
+    userDropdown.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+}
 </script>
 </body>
 </html>
+
 
 
 
