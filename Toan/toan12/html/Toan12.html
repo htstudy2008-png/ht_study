@@ -260,12 +260,11 @@
     <p>&copy; 2025 H&T STUDY</p>
 </footer>
 <script>
-/* =========================
-   DOM READY
-========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===== TAB SWITCH ===== */
+    /* =========================
+       TAB SWITCH
+    ========================= */
     const tabBtns = document.querySelectorAll(".tab-btn");
     const panels = document.querySelectorAll(".tab-panel");
 
@@ -280,15 +279,57 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    /* ===== MOBILE ACCORDION ===== */
-    document.querySelectorAll(".chapter-toggle").forEach(btn => {
+    /* =========================
+       COURSE TOGGLE (MỞ / ĐÓNG KHÓA)
+    ========================= */
+    document.querySelectorAll(".course-toggle").forEach(btn => {
         btn.addEventListener("click", () => {
-            const chapter = btn.closest(".chapter");
-            if (chapter) chapter.classList.toggle("open");
+            const card = btn.closest(".course-card");
+            card?.classList.toggle("open");
         });
     });
 
-    /* ===== LESSON POPUP ===== */
+    /* =========================
+       CHAPTER ACCORDION
+       - Mở 1 chương → đóng chương khác
+       - Animate mượt
+    ========================= */
+    const chapters = document.querySelectorAll(".chapter");
+
+    document.querySelectorAll(".chapter-toggle").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const currentChapter = btn.closest(".chapter");
+            if (!currentChapter) return;
+
+            const lessonBox = currentChapter.querySelector(".lessons-grid");
+
+            // đóng các chương khác
+            chapters.forEach(ch => {
+                if (ch !== currentChapter) {
+                    ch.classList.remove("open");
+                    ch.style.setProperty("--h", "0px");
+                }
+            });
+
+            // toggle chương hiện tại
+            if (currentChapter.classList.contains("open")) {
+                currentChapter.classList.remove("open");
+                currentChapter.style.setProperty("--h", "0px");
+            } else {
+                currentChapter.classList.add("open");
+                if (lessonBox) {
+                    currentChapter.style.setProperty(
+                        "--h",
+                        lessonBox.scrollHeight + "px"
+                    );
+                }
+            }
+        });
+    });
+
+    /* =========================
+       LESSON POPUP
+    ========================= */
     const popup = document.getElementById("lessonPopup");
     const popupTitle = document.getElementById("popupTitle");
     const popupDesc = document.getElementById("popupDesc");
@@ -297,7 +338,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentLessonId = null;
 
     document.querySelectorAll(".lesson-item").forEach(item => {
-        item.addEventListener("click", () => {
+        item.addEventListener("click", (e) => {
+            e.preventDefault();
             if (!popup) return;
 
             popupTitle.textContent = item.dataset.title || "";
@@ -308,20 +350,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    if (popup) {
-        popup.querySelector(".popup-close")?.addEventListener("click", () => {
-            popup.classList.remove("active");
-        });
+    popup?.querySelector(".popup-close")?.addEventListener("click", () => {
+        popup.classList.remove("active");
+    });
 
-        popup.querySelector(".popup-overlay")?.addEventListener("click", () => {
-            popup.classList.remove("active");
-        });
-    }
+    popup?.querySelector(".popup-overlay")?.addEventListener("click", () => {
+        popup.classList.remove("active");
+    });
 
-    /* ======================================================
-       LESSON PROGRESS (LƯU + HIỂN THỊ)
-    ====================================================== */
-
+    /* =========================
+       LESSON PROGRESS
+    ========================= */
     function applyProgress(progressList) {
         document.querySelectorAll(".lesson-item").forEach(item => {
             const id = item.dataset.lessonId;
@@ -331,14 +370,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Load tiến độ đã lưu (local tạm)
     const savedProgress = JSON.parse(
         localStorage.getItem("toan12_progress")
     ) || [];
 
     applyProgress(savedProgress);
 
-    // Khi nhấn "Vào bài học"
     popupAction?.addEventListener("click", () => {
         if (!currentLessonId) return;
 
@@ -355,20 +392,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         applyProgress(progress);
-
-        // đóng popup sau khi lưu
         popup?.classList.remove("active");
     });
-/* ===== COURSE TOGGLE ===== */
-document.querySelectorAll(".course-toggle").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const card = btn.closest(".course-card");
-        card.classList.toggle("open");
-    });
-});
 
 });
 </script>
 </body>
 </html>
+
 
