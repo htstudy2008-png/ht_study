@@ -1033,3 +1033,85 @@ footer {
     font-weight: 700;
     color: #22c55e;
 }
+/* ======================================================
+   LESSON GRID – Ô VUÔNG
+====================================================== */
+
+/* danh sách bài học */
+.lesson-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+/* mỗi bài học */
+.lesson-item {
+    position: relative;
+    background: radial-gradient(circle at top,
+                rgba(99,102,241,0.18),
+                rgba(15,23,42,0.95));
+    border: 1px solid rgba(148,163,184,0.35);
+    border-radius: 16px;
+
+    padding: 14px 12px;
+    min-height: 90px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #e5e7eb;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 10px 24px rgba(2,6,23,0.8);
+}
+
+/* hover */
+.lesson-item:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(99,102,241,0.8);
+    box-shadow: 0 16px 36px rgba(99,102,241,0.35);
+}
+
+/* số bài (tự động) */
+.lesson-item::before {
+    content: "▶";
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* ===== ĐÃ HỌC ===== */
+.lesson-item.completed {
+    background: radial-gradient(circle at top,
+                rgba(34,197,94,0.25),
+                rgba(15,23,42,0.95));
+    border-color: rgba(34,197,94,0.7);
+    color: #ecfdf5;
+}
+
+.lesson-item.completed::before {
+    content: "✔";
+    color: #22c55e;
+    font-weight: 900;
+}
+
+/* ======================================================
+   MOBILE TỐI ƯU
+====================================================== */
+@media (max-width: 768px) {
+    .lesson-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lesson-item {
+        min-height: 80px;
+        font-size: 13px;
+    }
+}
+
