@@ -371,6 +371,7 @@ body {
    overflow: hidden;
 }
 .course-hero::before {
+   pointer-events: none;
     content: "";
     position: absolute;
     inset: -40%;
@@ -386,6 +387,7 @@ body {
     pointer-events: none;
 }
 .course-hero::after {
+   pointer-events: none;
     content: "";
     position: absolute;
     inset: 0;
@@ -1407,5 +1409,6 @@ footer {
 .user-dropdown.open {
     display: block;
 }
+
 
 
