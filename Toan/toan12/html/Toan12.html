@@ -256,6 +256,12 @@
     <p>&copy; 2025 H&T STUDY</p>
 </footer>
 <script>
+function toggleMenu() {
+    document.getElementById("sidebar")?.classList.toggle("open");
+}
+    document.getElementById("avatar-btn")?.addEventListener("click", () => {
+    document.getElementById("user-dropdown")?.classList.toggle("open");
+});
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================
@@ -329,6 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
