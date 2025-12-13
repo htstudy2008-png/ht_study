@@ -194,25 +194,6 @@ body {
 .avatar-btn:hover {
     border-color: rgba(191,219,254,0.9);
 }
-.user-dropdown {
-    position: absolute;
-    right: 0;
-    top: 48px;
-    width: 230px;
-    min-width: 240px;
-    background: rgba(15,23,42,0.98);
-    border-radius: 16px;
-    border: 1px solid rgba(148,163,184,0.8);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.8);
-    display: none;
-    padding: 6px 0;
-    animation: fadeScale 0.25s ease;
-    z-index: 9999; /* 👈 THÊM / SỬA DÒNG NÀY */
-}
-
-.user-dropdown.open {
-    display: block;
-}
 .user-dropdown-inner {
     padding: 8px 14px 10px;
 }
@@ -711,27 +692,6 @@ footer {
     background-position: center;
     background-repeat: no-repeat;
     color: transparent;
-}
-
-/* Dropdown user */
-.user-dropdown {
-    position: absolute;
-    right: 0;
-    top: 52px;
-    min-width: 220px;
-    background: rgba(15,23,42,0.98);
-    border-radius: 16px;
-    padding: 10px 0;
-    border: 1px solid rgba(148,163,184,0.6);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.8);
-    display: none;
-    z-index: 1500;
-}
-
-.user-dropdown.open {
-    display: block;
-}
-
 .user-dropdown-inner {
     padding: 8px 14px 10px;
 }
@@ -1424,4 +1384,28 @@ footer {
         0 30px 80px rgba(239,68,68,0.35),
         inset 0 1px 0 rgba(255,255,255,0.08);
 }
+/* =========================
+   USER DROPDOWN – FIX CUỐI
+========================= */
+.user-dropdown {
+    position: absolute;
+    right: 0;
+    top: 52px;
+
+    min-width: 220px;
+    background: rgba(15,23,42,0.98);
+    border-radius: 16px;
+    padding: 10px 0;
+
+    border: 1px solid rgba(148,163,184,0.6);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.8);
+
+    display: none;
+    z-index: 9999;
+}
+
+.user-dropdown.open {
+    display: block;
+}
+
 
