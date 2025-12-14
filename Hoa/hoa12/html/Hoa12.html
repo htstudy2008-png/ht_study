@@ -28,20 +28,21 @@
 
         <div class="sidebar-section">
             <span class="sidebar-title">Toán</span>
-            <a href="../../../Toan/toan10/html/Toan10.html" data-need-login>Toán 10</a>
-            <a href="../../../Toan/toan11/html/Toan11.html" data-need-login>Toán 11</a>
-            <a href="../../../Toan/toan12/html/Toan12.html" data-need-login>Toán 12</a>
+            <a href="../../../toan10/html/Toan10.html" data-need-login>Toán 10</a>
+            <a href="../../../toan11/html/Toan11.html" data-need-login>Toán 11</a>
+            <a href="../../../toan12/html/Toan12.html" data-need-login>Toán 12</a>
         </div>
 
         <div class="sidebar-section">
             <span class="sidebar-title">Hóa</span>
-            <a href="../../hoa10/html/Hoa10.html" data-need-login>Hóa 10</a>
-            <a href="../../hoa11/html/Hoa11.html" data-need-login>Hóa 11</a>
+            <a href="../../Hoa/hoa10/html/Hoa10.html" data-need-login>Hóa 10</a>
+            <a href="../../Hoa/hoa11/html/Hoa11.html" data-need-login>Hóa 11</a>
             <a href="Hoa12.html" class="active" data-need-login>Hóa 12</a>
         </div>
 
         <a href="../../../dang-nhap/html/login.html" id="auth-button-sidebar">Đăng nhập</a>
     </nav>
+<div id="sidebar-overlay"></div>
 
     <div class="logo-title">
         <img src="../../../hinh_anh/logo.png" alt="H&T STUDY Logo">
@@ -53,20 +54,20 @@
             <li><a href="../../../trang_chu/html/index.html">Trang chủ</a></li>
 
             <li class="dropdown">
-                <a href="#">Toán</a>
+                <a href="#" class="active">Toán</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../../../Toan/toan10/html/Toan10.html" data-need-login>Toán 10</a></li>
-                    <li><a href="../../../Toan/toan11/html/Toan11.html" data-need-login>Toán 11</a></li>
-                    <li><a href="../../../Toan/toan12/html/Toan12.html" data-need-login>Toán 12</a></li>
+                    <li><a href="../../toan10/html/Toan10.html" data-need-login>Toán 10</a></li>
+                    <li><a href="../../toan11/html/Toan11.html" data-need-login>Toán 11</a></li>
+                    <li><a href="Toan12.html" class="active" data-need-login>Toán 12</a></li>
                 </ul>
             </li>
 
             <li class="dropdown">
-                <a href="#" class="active">Hóa</a>
+                <a href="#">Hóa</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../../hoa10/html/Hoa10.html" data-need-login>Hóa 10</a></li>
-                    <li><a href="../../hoa11/html/Hoa11.html" data-need-login>Hóa 11</a></li>
-                    <li><a href="Hoa12.html" class="active" data-need-login>Hóa 12</a></li>
+                    <li><a href="../../../Hoa/hoa10/html/Hoa10.html" data-need-login>Hóa 10</a></li>
+                    <li><a href="../../../Hoa/hoa11/html/Hoa11.html" data-need-login>Hóa 11</a></li>
+                    <li><a href="../../../Hoa/hoa12/html/Hoa12.html" data-need-login>Hóa 12</a></li>
                 </ul>
             </li>
         </ul>
@@ -90,13 +91,123 @@
     <input type="file" id="avatar-file" accept="image/*" style="display:none">
     <div id="avatar-alert" style="display:none;"></div>
 </header>
+    <!-- BANNER TOÁN 12 -->
+<section class="course-banner reveal">
+    <div class="course-banner-box">
 
-<main class="content">
-    <div class="card">
-        <h1>Hóa 12</h1>
-        <p>Trang dành cho nội dung Hóa 12.</p>
+        <div class="course-title-box reveal-item">
+            <h1>Toán 12</h1>
+            <p>Chương trình mới • Ôn thi THPT • Nâng cao tư duy</p>
+        </div>
+
+        <div class="course-stats">
+            <div class="stat-item reveal-item"> 
+                <strong>100+</strong>
+                <span>Video</span>
+            </div>
+
+            <div class="stat-item reveal-item">
+                <strong>1000+</strong>
+                <span>Học viên</span>
+            </div>
+
+            <div class="stat-item reveal-item">
+                <strong>PDF</strong>
+                <span>Tài liệu</span>
+            </div>
+
+            <div class="stat-item reveal-item">
+                <strong>Bài giảng</strong>
+                <span>Video</span>
+            </div>
+        </div>
+
     </div>
-</main>
+</section>
+    <!-- COURSE TABS -->
+<section class="course-tabs">
+
+    <div class="tabs-header">
+        <button class="tab-btn active" data-tab="overview">Tổng quan</button>
+        <button class="tab-btn" data-tab="content">Nội dung khóa học</button>
+    </div>
+
+    <div class="tabs-body">
+
+        <!-- ================= TỔNG QUAN ================= -->
+        <div class="tab-content active" id="overview">
+            <h2>Giới thiệu Toán 12</h2>
+            <p>
+                Khóa học <strong>Toán 12</strong> của H&T STUDY được thiết kế
+                theo chương trình mới của Bộ GD&ĐT, giúp học sinh
+                nắm vững kiến thức nền tảng, phát triển tư duy toán học
+                và tự tin chinh phục kỳ thi tốt nghiệp THPT.
+            </p>
+
+            <ul class="overview-list">
+                <li>✔ Hệ thống bài giảng từ cơ bản đến nâng cao</li>
+                <li>✔ Video chi tiết, dễ hiểu, học lại không giới hạn</li>
+                <li>✔ Tài liệu PDF đầy đủ – cô đọng – dễ ôn tập</li>
+                <li>✔ Phù hợp cho mọi đối tượng: mất gốc → nâng cao</li>
+            </ul>
+        </div>
+
+        <!-- ================= NỘI DUNG KHÓA HỌC ================= -->
+        <div class="tab-content" id="content">
+
+            <!-- KHÓA -->
+            <div class="course-item">
+                <div class="course-header" onclick="toggleBlock(this)">
+    <span>Nền tảng</span>
+    <span class="arrow">▾</span>
+</div>
+
+                <!-- CHƯƠNG -->
+                <div class="course-body">
+                    <div class="chapter-item">
+    <div class="chapter-header" onclick="toggleBlock(this)">
+        <span>Chương 1: Ứng dụng đạo hàm</span>
+        <span class="chapter-meta">
+            <span class="lesson-count">2 bài</span>
+            <span class="arrow">▾</span>
+        </span>
+    </div>
+
+    <div class="lesson-list">
+        <a href="../chuong1/html/baihoc.html" class="lesson-item">Bài 1: Tính đơn điệu</a>
+        <a href="bai2.html" class="lesson-item">Bài 2: Cực trị</a>
+    </div>
+</div>
+
+                    <div class="chapter-item">
+                        <div class="chapter-header" onclick="toggleBlock(this)">
+                            Chương 2: Hàm số mũ – logarit
+                        </div>
+
+                        <div class="lesson-list">
+                            <a href="bai3.html" class="lesson-item">Bài 1: Lũy thừa</a>
+                            <a href="bai4.html" class="lesson-item">Bài 2: Logarit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KHÓA -->
+            <div class="course-item">
+                <div class="course-header" onclick="toggleBlock(this)">
+                    Luyện đề
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header" onclick="toggleBlock(this)">
+                    Học sinh giỏi (HSG)
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 <footer>
     <p>&copy; 2025 H&T STUDY</p>
@@ -105,8 +216,103 @@
 <script>
 function toggleMenu() {
     const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebar-overlay");
+
     sidebar.classList.toggle("open");
+    overlay.classList.toggle("show");
 }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("sidebar-overlay");
+    if (overlay) {
+        overlay.addEventListener("click", toggleMenu);
+    }
+});
+</script>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+reveals.forEach(el => observer.observe(el));
+</script>
+<script>
+const banner = document.querySelector(".course-banner");
+
+if (banner) {
+    window.addEventListener("scroll", () => {
+        const rect = banner.getBoundingClientRect();
+        const offset = rect.top * 0.15;
+
+        banner.style.setProperty("--parallaxY", `${offset}px`);
+    });
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+
+            // bỏ active hết
+            tabBtns.forEach(b => b.classList.remove("active"));
+            tabContents.forEach(c => c.classList.remove("active"));
+
+            // active tab hiện tại
+            btn.classList.add("active");
+
+            const target = btn.getAttribute("data-tab");
+            const content = document.getElementById(target);
+
+            if (content) {
+                content.classList.add("active");
+            }
+        });
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ===== MỞ / ĐÓNG KHÓA ===== */
+    document.querySelectorAll(".course-header").forEach(header => {
+        header.addEventListener("click", () => {
+            const body = header.nextElementSibling;
+            if (!body) return;
+
+            header.classList.toggle("open");
+            body.classList.toggle("show");
+        });
+    });
+
+    /* ===== MỞ / ĐÓNG CHƯƠNG ===== */
+    document.querySelectorAll(".chapter-header").forEach(header => {
+        header.addEventListener("click", () => {
+            const lessons = header.nextElementSibling;
+            if (!lessons) return;
+
+            header.classList.toggle("open");
+            lessons.classList.toggle("show");
+        });
+    });
+
+});
 </script>
 
 </body>
