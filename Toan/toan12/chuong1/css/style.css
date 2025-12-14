@@ -4,7 +4,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
                  Roboto, Arial, sans-serif;
@@ -908,17 +907,6 @@ footer {
     cursor: pointer;
     font-weight: 600;
     margin-bottom: 8px;
-}
-
-.course-body,
-.lesson-list {
-    display: none;
-    margin-left: 16px;
-}
-
-.course.open .course-body,
-.chapter.open .lesson-list {
-    display: block;
 }
 
 /* ===== LESSON ===== */
