@@ -889,7 +889,7 @@ footer {
 }
 
 /* MỤC LỤC ACTIVE */
-.chapter-item.active > .chapter-header {
+.chapter.open > .chapter-header {
     background: rgba(37,99,235,0.25);
     border-left: 4px solid #fbbf24;
 }
@@ -1017,4 +1017,7 @@ footer {
 .course-header:hover,
 .chapter-header:hover {
     background: rgba(37,99,235,0.18);
+}
+.chapter > .lesson-list {
+    display: block;
 }
