@@ -117,51 +117,61 @@
         <div class="tabs-body">
 
             <!-- ===== MỤC LỤC ===== -->
-            <div class="tab-content active" id="outline">
+    <div class="tab-content active" id="outline">
 
-                <div class="course-item">
+    <div class="course">
 
-                    <div class="course-header open">
-                        XPS – Nền tảng Toán 12
-                    </div>
+        <!-- KHÓA -->
+        <div class="course-header">
+            XPS – Nền tảng Toán 12
+        </div>
 
-                    <div class="course-body show">
+        <div class="course-body">
 
-                        <!-- CHƯƠNG -->
-                        <div class="chapter-item active">
-                            <div class="chapter-header open">
-                                Chương 1: Ứng dụng đạo hàm
-                            </div>
+            <!-- CHƯƠNG -->
+            <div class="chapter">
 
-                            <div class="lesson-list show">
-                                <a class="lesson-item active">
-                                    ▶ Bài 1: Tính đơn điệu
-                                </a>
-                                <a class="lesson-item">
-                                    Bài 2: Cực trị
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="chapter-header">
+                    Chương 1: Ứng dụng đạo hàm
                 </div>
 
+                <div class="lesson-list">
+
+                    <!-- BÀI 1 -->
+                    <div class="lesson-item active"
+                         data-video="../video/chuong1-bai1.mp4"
+                         data-docs='[
+                            {"name":"Tài liệu bài 1","file":"../pdf/chuong1-bai1.pdf"},
+                            {"name":"Bài tập tự luyện","file":"../pdf/bt-tuduyen.pdf"}
+                         ]'>
+                        ▶ Bài 1: Tính đơn điệu
+                    </div>
+
+                    <!-- BÀI 2 -->
+                    <div class="lesson-item"
+                         data-video="../video/chuong1-bai2.mp4"
+                         data-docs='[
+                            {"name":"Tài liệu bài 2","file":"../pdf/chuong1-bai2.pdf"}
+                         ]'>
+                        ▶ Bài 2: Cực trị
+                    </div>
+
+                </div>
             </div>
+
+        </div>
+    </div>
+
+</div>
 
             <!-- ===== TÀI LIỆU ===== -->
-            <div class="tab-content" id="docs">
+            <div id="docs" class="tab-content">
 
-                <div class="doc-list">
-                    <a href="../pdf/chuong1-bai1.pdf" download class="doc-item">
-                        📄 Tài liệu Chương 1 – Bài 1
-                    </a>
+    <div class="doc-list" id="docList">
+        <!-- JS tự đổ tài liệu -->
+    </div>
 
-                    <a href="../pdf/bt-tuduyen.pdf" download class="doc-item">
-                        📄 Bài tập tự luyện
-                    </a>
-                </div>
-
-            </div>
+</div>
 
         </div>
     </section>
@@ -187,6 +197,58 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
         document.getElementById(btn.dataset.tab).classList.add("active");
     });
 });
+</script>
+<script>
+const video = document.querySelector("video");
+const lessons = document.querySelectorAll(".lesson-item");
+const docList = document.getElementById("docList");
+
+/* KHÓA */
+document.querySelectorAll(".course-header").forEach(course => {
+    course.onclick = () => {
+        course.parentElement.classList.toggle("open");
+    };
+});
+
+/* CHƯƠNG */
+document.querySelectorAll(".chapter-header").forEach(chapter => {
+    chapter.onclick = () => {
+        chapter.parentElement.classList.toggle("open");
+    };
+});
+
+/* BÀI */
+lessons.forEach(lesson => {
+    lesson.onclick = () => {
+
+        // active bài
+        lessons.forEach(l => l.classList.remove("active"));
+        lesson.classList.add("active");
+
+        // đổi video
+        video.src = lesson.dataset.video;
+        video.load();
+
+        // đổi tài liệu
+        loadDocs(JSON.parse(lesson.dataset.docs));
+    };
+});
+
+/* LOAD PDF */
+function loadDocs(docs) {
+    docList.innerHTML = "";
+    docs.forEach(doc => {
+        const a = document.createElement("a");
+        a.href = doc.file;
+        a.download = "";
+        a.className = "doc-item";
+        a.textContent = "📄 " + doc.name;
+        docList.appendChild(a);
+    });
+}
+
+/* LOAD BÀI ĐẦU */
+document.querySelector(".lesson-item.active")?.click();
 </script>
 
 </body>
