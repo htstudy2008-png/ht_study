@@ -899,3 +899,53 @@ footer {
     color: #fbbf24;
     font-weight: 700;
 }
+/* ===== COURSE ===== */
+.course-header,
+.chapter-header {
+    padding: 12px 16px;
+    background: rgba(15,23,42,0.9);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.course-body,
+.lesson-list {
+    display: none;
+    margin-left: 16px;
+}
+
+.course.open .course-body,
+.chapter.open .lesson-list {
+    display: block;
+}
+
+/* ===== LESSON ===== */
+.lesson-item {
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 6px;
+    color: #cbd5f5;
+}
+
+.lesson-item:hover {
+    background: rgba(37,99,235,0.15);
+}
+
+.lesson-item.active {
+    background: rgba(37,99,235,0.25);
+    color: #fbbf24;
+    font-weight: 700;
+}
+
+/* ===== DOC ===== */
+.doc-item {
+    display: block;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: rgba(15,23,42,0.85);
+    border: 1px solid rgba(148,163,184,0.3);
+}
