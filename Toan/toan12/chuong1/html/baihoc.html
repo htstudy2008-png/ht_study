@@ -102,7 +102,7 @@
         </div>
 
         <div class="lesson-title">
-            <h1>Chương 1 – Bài 1: Tính đơn điệu của hàm số</h1>
+            <h1 id="lessonTitle">Chương 1 – Bài 1: Tính đơn điệu của hàm số</h1>
             <p>Toán 12 • XPS – Nền tảng</p>
         </div>
     </section>
@@ -139,6 +139,8 @@
 
                     <!-- BÀI 1 -->
                     <div class="lesson-item active"
+                         data-chapter="Chương 1"
+                         data-title="Bài 1: Tính đơn điệu của hàm số"
                          data-video="../video/chuong1-bai1.mp4"
                          data-docs='[
                             {"name":"Tài liệu bài 1","file":"../pdf/chuong1-bai1.pdf"},
@@ -149,6 +151,8 @@
 
                     <!-- BÀI 2 -->
                     <div class="lesson-item"
+                         data-chapter="Chương 1"
+                         data-title="Bài 2: Cực trị"
                          data-video="../video/chuong1-bai2.mp4"
                          data-docs='[
                             {"name":"Tài liệu bài 2","file":"../pdf/chuong1-bai2.pdf"}
@@ -221,15 +225,25 @@ document.querySelectorAll(".chapter-header").forEach(chapter => {
 lessons.forEach(lesson => {
     lesson.onclick = () => {
 
-        // active bài
+        /* active bài */
         lessons.forEach(l => l.classList.remove("active"));
         lesson.classList.add("active");
 
-        // đổi video
+        /* đổi video */
         video.src = lesson.dataset.video;
         video.load();
+        video.play();
 
-        // đổi tài liệu
+        /* đổi tiêu đề */
+        const chapter = lesson.dataset.chapter;
+        const title = lesson.dataset.title;
+        const titleEl = document.getElementById("lessonTitle");
+
+        if (titleEl) {
+            titleEl.textContent = `${chapter} – ${title}`;
+        }
+
+        /* đổi tài liệu */
         loadDocs(JSON.parse(lesson.dataset.docs));
     };
 });
