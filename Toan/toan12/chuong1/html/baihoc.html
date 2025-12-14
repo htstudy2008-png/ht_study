@@ -106,6 +106,66 @@
             <p>Toán 12 • XPS – Nền tảng</p>
         </div>
     </section>
+    <!-- TABS -->
+    <section class="lesson-tabs">
+
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="outline">Mục lục khóa học</button>
+            <button class="tab-btn" data-tab="docs">Tài liệu</button>
+        </div>
+
+        <div class="tabs-body">
+
+            <!-- ===== MỤC LỤC ===== -->
+            <div class="tab-content active" id="outline">
+
+                <div class="course-item">
+
+                    <div class="course-header open">
+                        XPS – Nền tảng Toán 12
+                    </div>
+
+                    <div class="course-body show">
+
+                        <!-- CHƯƠNG -->
+                        <div class="chapter-item active">
+                            <div class="chapter-header open">
+                                Chương 1: Ứng dụng đạo hàm
+                            </div>
+
+                            <div class="lesson-list show">
+                                <a class="lesson-item active">
+                                    ▶ Bài 1: Tính đơn điệu
+                                </a>
+                                <a class="lesson-item">
+                                    Bài 2: Cực trị
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== TÀI LIỆU ===== -->
+            <div class="tab-content" id="docs">
+
+                <div class="doc-list">
+                    <a href="../pdf/chuong1-bai1.pdf" download class="doc-item">
+                        📄 Tài liệu Chương 1 – Bài 1
+                    </a>
+
+                    <a href="../pdf/bt-tuduyen.pdf" download class="doc-item">
+                        📄 Bài tập tự luyện
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</main>
 
 <footer>
     <p>&copy; 2025 H&T STUDY</p>
@@ -116,6 +176,17 @@ function toggleMenu() {
     const sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle("open");
 }
+</script>
+<script>
+document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+    });
+});
 </script>
 
 </body>
