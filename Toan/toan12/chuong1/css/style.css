@@ -949,3 +949,42 @@ footer {
     background: rgba(15,23,42,0.85);
     border: 1px solid rgba(148,163,184,0.3);
 }
+/* ======================================
+   FIX MỤC LỤC KHÓA HỌC – CHUẨN HÓA
+====================================== */
+
+/* mặc định đóng */
+.course-body,
+.lesson-list {
+    display: none !important;
+}
+
+/* mở khi click */
+.course.open > .course-body {
+    display: block !important;
+}
+
+.chapter.open > .lesson-list {
+    display: block !important;
+}
+
+/* header click */
+.course-header,
+.chapter-header {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* bài học */
+.lesson-item {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+/* bài đang học */
+.lesson-item.active {
+    background: rgba(37,99,235,0.25);
+    color: #fbbf24;
+    font-weight: 700;
+}
