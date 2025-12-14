@@ -954,15 +954,6 @@ footer {
 ====================================== */
 
 /* mặc định đóng */
-.course-body,
-.lesson-list {
-    display: none !important;
-}
-
-/* mở khi click */
-.course.open > .course-body {
-    display: block !important;
-}
 
 .chapter.open > .lesson-list {
     display: block !important;
@@ -987,4 +978,55 @@ footer {
     background: rgba(37,99,235,0.25);
     color: #fbbf24;
     font-weight: 700;
+}
+/* ===============================
+   ANIMATE MỤC LỤC KHÓA HỌC
+================================ */
+
+/* container */
+.course-body,
+.lesson-list {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+        max-height 0.35s ease,
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* mở khóa */
+.course.open > .course-body {
+    max-height: 1000px; /* đủ lớn */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* mở chương */
+.chapter.open > .lesson-list {
+    max-height: 800px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* header có icon mũi tên */
+.course-header::after,
+.chapter-header::after {
+    content: "▸";
+    float: right;
+    transition: transform 0.25s ease;
+    opacity: 0.7;
+}
+
+/* xoay mũi tên khi mở */
+.course.open > .course-header::after,
+.chapter.open > .chapter-header::after {
+    transform: rotate(90deg);
+}
+
+/* hover mượt hơn */
+.course-header:hover,
+.chapter-header:hover {
+    background: rgba(37,99,235,0.18);
 }
