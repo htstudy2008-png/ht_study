@@ -437,6 +437,14 @@
     <p>&copy; 2025 H&T STUDY</p>
 </footer>
 <script>
+function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    if (!sidebar) return;
+    sidebar.classList.toggle("open");
+}
+</script>
+
+<script>
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ======================
