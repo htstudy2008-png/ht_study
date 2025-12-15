@@ -990,6 +990,23 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+/* ======================
+   MỞ KHÓA (NỀN TẢNG)
+====================== */
+.course.open > .course-body {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ======================
+   MỞ CHƯƠNG
+====================== */
+.chapter.open > .lesson-list {
+    max-height: 800px;
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* mở chương */
 .chapter.open > .lesson-list {
