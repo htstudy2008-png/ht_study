@@ -454,6 +454,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const titleEl = document.getElementById("lessonTitle");
     const docList = document.getElementById("docList");
     const lessons = document.querySelectorAll(".lesson-item");
+function getLessonFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("lesson");
+    if (!key) return null;
+
+    return [...lessons].find(
+        lesson => lesson.dataset.key === key
+    );
+}
 
     /* ======================
        LOAD BÀI HỌC
@@ -496,17 +505,27 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ======================
        CLICK BÀI HỌC
     ====================== */
-    lessons.forEach(lesson => {
-        lesson.addEventListener("click", () => {
-            loadLesson(lesson);
-        });
+   lessons.forEach(lesson => {
+    lesson.addEventListener("click", () => {
+        history.replaceState(
+            null,
+            "",
+            "?lesson=" + lesson.dataset.key
+        );
+        loadLesson(lesson);
     });
+});
 
     /* ======================
        LOAD BÀI ĐẦU TIÊN
     ====================== */
-    loadLesson(document.querySelector(".lesson-item.active")
-        || lessons[0]);
+    const fromURL = getLessonFromURL();
+
+loadLesson(
+    fromURL
+    || document.querySelector(".lesson-item.active")
+    || lessons[0]
+);
 
     /* ======================
        TAB
