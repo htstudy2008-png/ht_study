@@ -497,16 +497,10 @@ function getLessonFromURL() {
         lesson.classList.add("active");
 
         // mở chương
-document.querySelectorAll(".chapter").forEach(c => {
-    c.classList.remove("open");
-    c.querySelector(".lesson-list")?.classList.remove("show");
-});
-
-const chapter = lesson.closest(".chapter");
-if (chapter) {
-    chapter.classList.add("open");
-    chapter.querySelector(".lesson-list")?.classList.add("show");
-}
+        document.querySelectorAll(".chapter")
+            .forEach(c => c.classList.remove("open"));
+        lesson.closest(".chapter")?.classList.add("open");
+    }
 
     /* ======================
        CLICK BÀI HỌC
