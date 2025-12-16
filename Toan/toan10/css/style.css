@@ -280,24 +280,23 @@ body {
 
 /* ========== SIDEBAR TRƯỢT ========== */
 .sidebar {
-    height: 100%;
-    width: 0;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -280px;           /* Ẩn ra ngoài màn hình */
+    width: 280px;
+    height: 100vh;
     background: #020617;
-    overflow-x: hidden;
-    transition: width 0.3s ease;
+    overflow-y: auto;
+    transition: left 0.3s ease;
     padding-top: 80px;
-    z-index: 1500;
+    z-index: 3000;
     border-right: 1px solid rgba(148,163,184,0.6);
     box-shadow: 12px 0 30px rgba(0,0,0,0.85);
 }
 
 .sidebar.open {
-    width: 260px;
+    left: 0;                /* Trượt vào */
 }
-
 .sidebar a {
     padding: 10px 22px;
     display: block;
@@ -808,4 +807,438 @@ footer {
         height: 32px;
         font-size: 12px;
     }
+}
+/* ======================================================
+   BANNER KHÓA HỌC – HIỆN ĐẠI
+====================================================== */
+
+.course-banner {
+    margin-top: 90px;
+    padding: 50px 16px 60px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* NỀN GRADIENT + HIỆU ỨNG ÁNH SÁNG */
+.course-banner::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(56,189,248,0.25), transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(99,102,241,0.25), transparent 45%),
+        linear-gradient(135deg, #020617, #0f172a);
+    filter: blur(20px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* KHUNG CHÍNH */
+.course-banner-box {
+    width: 100%;
+    max-width: 1100px;
+    background: rgba(2,6,23,0.75);
+    backdrop-filter: blur(18px);
+    border-radius: 22px;
+    padding: 36px 40px 40px;
+    border: 1px solid rgba(148,163,184,0.35);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.65),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== TIÊU ĐỀ ===== */
+
+.course-title-box {
+    max-width: 520px;
+    margin-bottom: 36px;
+}
+
+.course-title-box h1 {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.course-title-box p {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* ===== THỐNG KÊ ===== */
+
+.course-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.stat-item {
+    background: rgba(2,6,23,0.85);
+    border-radius: 18px;
+    padding: 22px 20px;
+    text-align: center;
+    border: 1px solid rgba(148,163,184,0.25);
+    backdrop-filter: blur(8px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 14px 30px rgba(56,189,248,0.25),
+        inset 0 0 0 1px rgba(56,189,248,0.25);
+}
+
+.stat-item strong {
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    color: #e5e7eb;
+    margin-bottom: 6px;
+}
+
+.stat-item span {
+    font-size: 14px;
+    color: #94a3b8;
+    letter-spacing: 0.04em;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+    .course-banner {
+        padding: 36px 14px 44px;
+    }
+
+    .course-banner-box {
+        padding: 26px 22px 28px;
+    }
+
+    .course-title-box h1 {
+        font-size: 30px;
+    }
+
+    .course-title-box p {
+        font-size: 14px;
+    }
+}
+
+/* ======================================================
+   SCROLL ANIMATION – HIỆN ĐẠI
+====================================================== */
+
+/* Trạng thái ban đầu */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* Khi xuất hiện */
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Item bên trong */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+}
+
+/* Khi hiện */
+.reveal.show .reveal-item {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: all 0.6s ease;
+}
+
+/* Hiện lần lượt */
+.reveal.show .reveal-item:nth-child(1) { transition-delay: 0.15s; }
+.reveal.show .reveal-item:nth-child(2) { transition-delay: 0.30s; }
+.reveal.show .reveal-item:nth-child(3) { transition-delay: 0.45s; }
+.reveal.show .reveal-item:nth-child(4) { transition-delay: 0.60s; }
+
+/* Hover nâng cấp hiện đại */
+.stat-item {
+    backdrop-filter: blur(6px);
+}
+/* ======================================================
+   PARALLAX BACKGROUND – BANNER
+====================================================== */
+
+.course-banner {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lớp nền parallax */
+.course-banner::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(56,189,248,0.15), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(99,102,241,0.15), transparent 40%),
+        linear-gradient(135deg, #020617, #0f172a);
+    transform: translateY(var(--parallaxY, 0));
+    transition: transform 0.1s linear;
+    z-index: 0;
+}
+
+/* Nội dung nằm trên nền */
+.course-banner-box {
+    position: relative;
+    z-index: 1;
+}
+@media (max-width: 768px) {
+
+    /* Tắt parallax cho mobile */
+    .course-banner::before {
+        transform: none !important;
+    }
+
+    /* Animation mobile: fade + scale */
+    .reveal {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    .reveal.show {
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.6s ease;
+    }
+
+    .reveal-item {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .reveal.show .reveal-item {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.4s ease;
+    }
+
+    .reveal.show .reveal-item:nth-child(1) { transition-delay: 0.1s; }
+    .reveal.show .reveal-item:nth-child(2) { transition-delay: 0.2s; }
+    .reveal.show .reveal-item:nth-child(3) { transition-delay: 0.3s; }
+    .reveal.show .reveal-item:nth-child(4) { transition-delay: 0.4s; }
+}
+/* ======================================================
+   COURSE TABS
+====================================================== */
+.course-tabs {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.tabs-header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.tab-btn {
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid #334155;
+    background: #020617;
+    color: #94a3b8;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tab-btn.active {
+    background: #38bdf8;
+    color: #020617;
+    border-color: transparent;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===== Tổng quan ===== */
+#overview h2 {
+    margin-bottom: 12px;
+}
+
+.overview-list {
+    margin-top: 16px;
+    padding-left: 20px;
+}
+
+.overview-list li {
+    margin-bottom: 10px;
+}
+
+/* ===== Nội dung khóa học ===== */
+.course-item {
+    margin-bottom: 14px;
+}
+
+.course-header {
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.course-body {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.course-body.show {
+    max-height: 2000px; /* đủ lớn */
+    opacity: 1;
+}
+
+.chapter-header {
+    padding: 12px;
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.lesson-list {
+    padding-left: 16px;
+    margin-bottom: 12px;
+}
+
+.lesson-item {
+    display: block;
+    padding: 10px;
+    margin-bottom: 6px;
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+}
+
+.lesson-item:hover {
+    background: #0f172a;
+}
+/* ======================================================
+   ICON + ANIMATION MỞ KHÓA / CHƯƠNG
+====================================================== */
+
+.course-header,
+.chapter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Mũi tên */
+.arrow {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Khi mở */
+.open > .arrow,
+.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* ===== Animation mở nội dung ===== */
+.course-body,
+.lesson-list {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.course-body.show,
+.lesson-list.show {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+/* ===== Số bài ===== */
+.chapter-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-count {
+    font-size: 12px;
+    color: #38bdf8;
+    background: rgba(56,189,248,0.1);
+    padding: 3px 8px;
+    border-radius: 999px;
+}
+@media (max-width: 768px) {
+
+    .course-header,
+    .chapter-header {
+        padding: 18px;
+        font-size: 15px;
+    }
+
+    .lesson-item {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .tabs-header {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .tabs-header::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        white-space: nowrap;
+    }
+
+    .lesson-count {
+        font-size: 11px;
+    }
+}
+#sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2,6,23,0.6);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 2500;
+}
+
+#sidebar-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
 }
