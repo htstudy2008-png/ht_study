@@ -25,8 +25,12 @@ const HOME_PAGE  = BASE_PATH + "/trang_chu/html/index.html";
 
 // Danh sách học sinh (tự thêm/sửa ở đây)
 const STUDENTS = [
-  { code: "HS001", password: "123456", name: "Nguyễn Văn A" },
-  { code: "HS002", password: "abcdef", name: "Trần Thị B" }
+  { code: "HTK02206", password: "220608", name: "Ngô Đa Hiếu" },
+  { code: "HK1", password: "08", name: "Mai Quỳnh Như" },
+  { code: "HK1", password: "08", name: "Huỳnh Lam Băng" },
+  { code: "HK1", password: "08", name: "Phương Anh" },
+  { code: "HK1", password: "08", name: "Minh Thư" },
+  { code: "HK1", password: "08", name: "Kim Hoa" }
 ];
 
 // ==========================
@@ -308,3 +312,4 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================
 //  KẾT THÚC FILE auth.js
 // ==========================
+
