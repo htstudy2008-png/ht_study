@@ -1,6 +1,18 @@
 // ==========================
 //  HỆ THỐNG ĐĂNG NHẬP H&T STUDY
 // ==========================
+let currentUser = null;
+
+import { auth, db } from "/firebase/firebase.js";
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // TÍNH BASE PATH CHO GITHUB PAGES (project site)
 function getBasePath() {
@@ -23,35 +35,39 @@ const BASE_PATH  = getBasePath();
 const LOGIN_PAGE = BASE_PATH + "/dang-nhap/html/login.html";
 const HOME_PAGE  = BASE_PATH + "/trang_chu/html/index.html";
 
-// Danh sách học sinh (tự thêm/sửa ở đây)
-const STUDENTS = [
-  { code: "HTK02206", password: "220608", name: "Ngô Đa Hiếu" },
-  { code: "HK1", password: "08", name: "Mai Quỳnh Như" },
-  { code: "HK1", password: "08", name: "Huỳnh Lam Băng" },
-  { code: "HK1", password: "08", name: "Phương Anh" },
-  { code: "HK1", password: "08", name: "Minh Thư" },
-  { code: "HK1", password: "08", name: "Kim Hoa" }
-];
-
 // ==========================
 //  HÀM XỬ LÝ USER
 // ==========================
 function getCurrentUser() {
-  const raw = localStorage.getItem("htstudy_user");
-  if (!raw) return null;
-  try { return JSON.parse(raw); }
-  catch { return null; }
+  return currentUser;
 }
-
-function setCurrentUser(user) {
-  if (!user) localStorage.removeItem("htstudy_user");
-  else localStorage.setItem("htstudy_user", JSON.stringify(user));
+async function logout() {
+  try {
+    await signOut(auth); // logout Firebase thật
+    localStorage.removeItem("htstudy_redirect");
+    window.location.href = LOGIN_PAGE;
+  } catch (e) {
+    console.error("Logout error:", e);
+  }
 }
+function refreshUserUI() {
+  const nameEl = document.getElementById("user-name-display");
+  const codeEl = document.getElementById("user-code-display");
+  const authAction = document.getElementById("user-auth-btn");
 
-function logout() {
-  setCurrentUser(null);
-  localStorage.removeItem("htstudy_redirect");
-  location.reload();
+  const u = getCurrentUser();
+
+  if (!nameEl || !codeEl || !authAction) return;
+
+  if (u) {
+    nameEl.textContent = u.email || "Học sinh";
+    codeEl.textContent = "Đã đăng nhập";
+    authAction.textContent = "Đăng xuất";
+  } else {
+    nameEl.textContent = "Chưa đăng nhập";
+    codeEl.textContent = "Mã học sinh: ---";
+    authAction.textContent = "Đăng nhập";
+  }
 }
 
 // Lưu đường dẫn để quay lại sau login
@@ -65,8 +81,7 @@ function saveRedirect(url) {
   } else {
     path = window.location.pathname;
   }
-  localStorage.setItem("htstudy_redirect", path);
-}
+} 
 
 function loadRedirect() {
   const u = localStorage.getItem("htstudy_redirect");
@@ -77,7 +92,7 @@ function loadRedirect() {
 //  YÊU CẦU ĐĂNG NHẬP (DÙNG Ở TRANG MÔN HỌC)
 // ==========================
 function requireAuth() {
-  if (!getCurrentUser()) {
+  if (!currentUser) {
     saveRedirect(window.location.pathname);
     window.location.href = LOGIN_PAGE;
   }
@@ -141,24 +156,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---- XỬ LÝ FORM LOGIN (trang login.html) ----
   const form = document.getElementById("login-form");
   if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const code  = document.getElementById("student-code").value.trim();
-      const pass  = document.getElementById("password").value.trim();
-      const error = document.getElementById("login-error");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-      const found = STUDENTS.find(s => s.code === code && s.password === pass);
+  const code  = document.getElementById("student-code").value.trim();
+  const pass  = document.getElementById("password").value.trim();
+  const error = document.getElementById("login-error");
 
-      if (!found) {
-        if (error) {
-          error.style.display = "block";
-          error.textContent = "Sai mã học sinh hoặc mật khẩu.";
-        }
-      } else {
-        setCurrentUser({ code: found.code, name: found.name });
-        window.location.href = loadRedirect();
-      }
-    });
+  const email = code.toLowerCase() + "@htstudy.local";
+
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, pass);
+
+    const snap = await getDoc(doc(db, "users", res.user.uid));
+    if (!snap.exists()) throw new Error();
+
+    window.location.href = loadRedirect();
+  } catch {
+    error.style.display = "block";
+    error.textContent = "Sai mã học sinh hoặc mật khẩu.";
+  }
+});
   }
 
   // ---- AVATAR + DROPDOWN Ở HEADER ----
@@ -308,8 +326,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Nút ở sidebar (nếu có)
   setupAuthButton(document.getElementById("auth-button-sidebar"));
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    currentUser = null;
+  } else {
+    const snap = await getDoc(doc(db, "users", user.uid));
+    if (snap.exists()) {
+      currentUser = {
+        uid: user.uid,
+        email: user.email,
+        role: snap.data().role,
+        courses: snap.data().courses || []
+      };
+    }
+  }
+
+  // refresh UI nếu có
+  if (typeof refreshUserUI === "function") {
+    refreshUserUI();
+  }
+});
+
 });
 // ==========================
 //  KẾT THÚC FILE auth.js
 // ==========================
+
 
