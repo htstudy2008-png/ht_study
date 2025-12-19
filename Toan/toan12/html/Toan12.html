@@ -314,9 +314,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-
+<script type="module">
+  import { requireCourse } from "../../../firebase/course-guard.js";
+  requireCourse("toan12");
+</script>
 </body>
 </html>
+
 
 
 
