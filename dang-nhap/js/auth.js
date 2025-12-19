@@ -81,7 +81,10 @@ function saveRedirect(url) {
   } else {
     path = window.location.pathname;
   }
-} 
+
+  localStorage.setItem("htstudy_redirect", path); // ❗ THIẾU DÒNG NÀY
+}
+
 
 function loadRedirect() {
   const u = localStorage.getItem("htstudy_redirect");
@@ -169,15 +172,15 @@ form.addEventListener("submit", async (e) => {
     const res = await signInWithEmailAndPassword(auth, email, pass);
 
     const snap = await getDoc(doc(db, "users", res.user.uid));
-    if (!snap.exists()) throw new Error();
+    if (!snap.exists()) throw new Error("no-profile");
 
     window.location.href = loadRedirect();
-  } catch {
+  } catch (err) {
+    console.error(err);
     error.style.display = "block";
     error.textContent = "Sai mã học sinh hoặc mật khẩu.";
   }
 });
-  }
 
   // ---- AVATAR + DROPDOWN Ở HEADER ----
   const avatarBtn        = document.getElementById("avatar-btn");
@@ -226,21 +229,6 @@ form.addEventListener("submit", async (e) => {
   }
 
   if (avatarBtn && dropdown && nameEl && codeEl && authAction) {
-
-    function refreshUserUI() {
-      const u = getCurrentUser();
-      if (u) {
-        nameEl.textContent = u.name;
-        codeEl.textContent = "Mã học sinh: " + u.code;
-        authAction.textContent = "Đăng xuất";
-      } else {
-        nameEl.textContent = "Chưa đăng nhập";
-        codeEl.textContent = "Mã học sinh: ---";
-        authAction.textContent = "Đăng nhập";
-      }
-      applyAvatar(u);
-    }
-
     refreshUserUI();
 
     // Mở / đóng dropdown khi click avatar
@@ -351,5 +339,6 @@ onAuthStateChanged(auth, async (user) => {
 // ==========================
 //  KẾT THÚC FILE auth.js
 // ==========================
+
 
 
